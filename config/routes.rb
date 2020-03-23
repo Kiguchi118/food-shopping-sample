@@ -17,4 +17,8 @@ Rails.application.routes.draw do
     passwords: 'admins/passwords',
     registrations: 'admins/registrations'
   }
+
+  namespace :admins do
+    resources :items, only:[:index,:new,:create,:show,:edit]
+  end
 end
