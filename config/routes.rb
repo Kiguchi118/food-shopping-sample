@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  scope module: :users do
+    resources :users, only:[:show,:edit,:update,:destroy]
+  end
+
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
