@@ -66,3 +66,7 @@ gem 'devise'
 # bootstrap
 gem 'bootstrap-sass'
 gem 'jquery-rails'
+
+# 郵便番号から住所を自動入力
+gem 'jp_prefecture'
+gem 'jquery-rails'
