@@ -14,5 +14,15 @@ Admin.create!(
 User.create!(
    name: 'exa',
    email: 'a@a.com',
-   password: 'aaaaaa'
+   password: 'aaaaaa',
+   last_name: 'exa',
+   first_name: 'aaa',
+   last_name_kana: 'exa',
+   first_name_kana: 'aaa',
+   postcode: 1000004,
+   prefecture_name: '東京都',
+   address_city: '千代田区',
+   address_street: '大手町123-4',
+   address_building: 'オオテマチ',
+   telephone_number: '08012120000'
 )
