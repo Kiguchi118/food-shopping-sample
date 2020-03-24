@@ -7,4 +7,5 @@ class User < ApplicationRecord
   include JpPrefecture
   jp_prefecture :prefecture_code
   
+  acts_as_paranoid
 end
