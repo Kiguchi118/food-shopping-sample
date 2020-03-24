@@ -23,3 +23,10 @@
         <td><%= @user.telephone_number %></td>
     </tr>
 </table>
+
+<div class="btn-position">
+    <%= link_to "編集", edit_user_path(@user), class: "button" %>
+</div>
+<div class="btn-position">
+    <%= link_to '退会', user_path, method: :delete, data: { confirm: "本当によろしいですか？" }, class: "button" %>
+</div>
