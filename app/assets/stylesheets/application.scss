@@ -16,6 +16,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$dark-pink: #ff6e6e;
+$pink: #ff9191;
+$light-pink: rgb(255, 238, 238);
+
 body {
     padding-top: 60px;
 }
@@ -45,8 +49,25 @@ body {
                 color: rgb(44, 42, 42);
             }
             a:hover {
-                color: rgb(250, 91, 144);
+                color: $dark-pink;
             }
         }
+    }
+}
+
+table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse:  collapse;
+    th, td {
+        border: solid rgb(88, 88, 88) 2px;
+        padding: 10px;
+    }
+    th {
+        color: white;
+        background-color: $dark-pink;
+    }
+    td {
+        background-color: $light-pink;
     }
 }
