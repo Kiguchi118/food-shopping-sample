@@ -32,8 +32,6 @@ ActiveRecord::Schema.define(version: 2020_03_24_194847) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "last_name"
     t.string "first_name"
     t.string "last_name_kana"
@@ -44,6 +42,8 @@ ActiveRecord::Schema.define(version: 2020_03_24_194847) do
     t.string "address_street"
     t.string "address_building"
     t.string "telephone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

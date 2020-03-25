@@ -24,5 +24,6 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :items, only:[:index,:new,:create,:show,:edit]
+    resources :users, only:[:index,:show,:edit,:update,:destroy]
   end
 end
