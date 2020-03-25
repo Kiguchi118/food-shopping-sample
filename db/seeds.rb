@@ -7,11 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Admin.create!(
    name: 'testtest',
-   email: 'test@test.com',
-   password: 'testtest'
+   email: 'test@t',
+   password: 'tttttt'
 )
 
-User.create(
+User.create!(
    name: 'exa',
    email: 'a@a.com',
    password: 'aaaaaa',
@@ -25,4 +25,24 @@ User.create(
    address_street: '大手町123-4',
    address_building: 'オオテマチ',
    telephone_number: '08012120000'
+)
+
+Genre.create!(name: 'ケーキ')
+Genre.create!(name: 'プリン')
+Genre.create!(name: '焼き菓子')
+Genre.create!(name: 'キャンディ')
+
+Item.create!(
+   genre_id: 1,
+   name: "チョコレートケーキ",
+   introduction: "甘くて美味しいチョコケーキ！",
+   price: 500,
+   sales_status: true
+)
+Item.create!(
+   genre_id: 2,
+   name: "抹茶プリン",
+   introduction: "甘くて美味しい抹茶プリン！",
+   price: 250,
+   sales_status: true
 )
