@@ -72,3 +72,6 @@ gem 'jquery-rails'
 # 郵便番号から住所を自動入力
 gem 'jp_prefecture'
 gem 'jquery-rails'
+
+# 論理削除
+gem 'paranoia'

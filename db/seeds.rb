@@ -11,7 +11,7 @@ Admin.create!(
    password: 'testtest'
 )
 
-User.create!(
+User.create(
    name: 'exa',
    email: 'a@a.com',
    password: 'aaaaaa',

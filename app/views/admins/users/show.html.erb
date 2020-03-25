@@ -1,4 +1,9 @@
-<h1>マイページ</h1>
+<h1><%= @user.name %> 様の詳細</h1>
+
+<% if @user.deleted_at? %>
+    <span class="deleted-btn">退会済み</span>
+<% end %>
+
 <table>
     <tr>
         <th>名前</th>
@@ -25,8 +30,13 @@
 </table>
 
 <div class="btn-position">
-    <%= link_to "編集", edit_user_path(@user), class: "button" %>
+    <%= link_to "編集", edit_admins_user_path(@user), class: "button" %>
 </div>
 <div class="btn-position">
-    <%= link_to '退会', @user, method: :delete, data: { confirm: "本当によろしいですか？" }, class: "button" %>
+    <% unless @user.deleted_at? %>
+        <%= link_to "退会", admins_user_path(@user), 
+                method: :delete, data: { confirm: "本当によろしいですか？" }, class: "button" %>
+    <% else %>
+        <%= link_to "復元", restore_admins_user_path(@user), method: :patch, class: "button" %>
+    <% end %>
 </div>

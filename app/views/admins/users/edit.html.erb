@@ -1,5 +1,5 @@
-<h1>登録情報編集</h1>
-<%= form_with(model: @user, local: true) do |f| %>
+<h1>ユーザー情報編集</h1>
+<%= form_with(model: @user, local: true, url: admins_user_path) do |f| %>
     <div class="field">
         <%= f.label :name, "ユーザー名" %><br />
         <%= f.text_field :name, autofocus: true, class: "name" %>

@@ -1,9 +1,13 @@
-class Users::UsersController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update]
-  before_action :correct_user, only: [:edit, :update]
+class Admins::UsersController < ApplicationController
+  before_action :authenticate_admin!
+  before_action :set_user, only: [:edit, :update]
+
+  def index
+    @users = User.with_deleted
+  end
 
   def show
+    @user = User.with_deleted.find(params[:id])
   end
 
   def edit
@@ -11,8 +15,8 @@ class Users::UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:success] = "登録情報を更新しました"
-      redirect_to @user
+      flash[:success] = "ユーザー登録情報を更新しました"
+      redirect_to admins_users_url
     else
       render "edit"
     end
@@ -21,7 +25,12 @@ class Users::UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     user.destroy
-    redirect_to new_user_session_path
+    redirect_to admins_users_url
+  end
+
+  def restore
+    user = User.only_deleted.find(params[:id]).restore
+    redirect_to admins_users_url
   end
 
   private
@@ -38,9 +47,4 @@ class Users::UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
-    def correct_user
-      if current_user.id != @user.id
-        redirect_to user_path(current_user)
-      end
-    end
 end
