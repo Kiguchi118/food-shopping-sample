@@ -99,3 +99,15 @@ table {
     margin-bottom: 30px;
     text-align: center;
 }
+
+.deleted-btn {
+    display: inline-block;
+    border-radius: 50%;
+    font-size: 15px;
+    text-align: center;
+    padding: 11px 11px;
+    background-color: rgb(223, 150, 241);
+    color: black;
+    line-height: 11px;
+    border: 2px solid $gray;
+}

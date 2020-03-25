@@ -4,24 +4,19 @@
         <tr>
             <th>名前</th>
             <th>メールアドレス</th>
-            <th>詳細／退会</th>
+            <th>退会</th>
         </tr>
     </thead>
     <tbody>
         <% @users.each do |user| %>
         <tr>
-            <td>
-                <%= user.name %>
-            </td>
+            <td><%= link_to "#{user.name}", admins_user_path(user) %></td>
             <td><%= user.email%></td>
             <td>
                 <% if user.deleted_at? %>
                     退会済み
-                <% else%>
-                    <%= link_to admins_user_path(user) do %>
-                        詳細
-                    <% end %>
-                <% end %></td>
+                <% end %>
+            </td>
         </tr>
         <% end %>
     </tbody>

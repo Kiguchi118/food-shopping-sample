@@ -1,4 +1,9 @@
-<h1>ユーザー情報</h1>
+<h1><%= @user.name %> 様の詳細</h1>
+
+<% if @user.deleted_at? %>
+    <span class="deleted-btn">退会済み</span>
+<% end %>
+
 <table>
     <tr>
         <th>名前</th>
