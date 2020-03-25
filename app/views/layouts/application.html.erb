@@ -19,14 +19,14 @@
           <ul class="nav navbar-nav navbar-right navbar-nav--extend">
             <% if user_signed_in? %>
               <li class="logo">ユーザー</li>
-              <li><%= link_to "マイページ" %></li>
+              <li><%= link_to "マイページ", current_user %></li>
               <li><%= link_to "カート一覧" %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             <% elsif admin_signed_in? %>
               <li class="logo">管理者</li>
               <li><%= link_to "受注一覧" %></li>
               <li><%= link_to "商品登録" %></li>
-              <li><%= link_to "ユーザー一覧" %></li>
+              <li><%= link_to "ユーザー情報", admins_users_path %></li>
               <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
             <% else %>
               <li class="logo">ゲストユーザー</li>
