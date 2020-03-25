@@ -23,7 +23,14 @@ class Admins::UsersController < ApplicationController
   end
 
   def destroy
+    user = User.find(params[:id])
+    user.destroy
+    redirect_to admins_users_url
+  end
 
+  def restore
+    user = User.only_deleted.find(params[:id]).restore
+    redirect_to admins_users_url
   end
 
   private
