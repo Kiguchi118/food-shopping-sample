@@ -75,3 +75,6 @@ gem 'jquery-rails'
 
 # 論理削除
 gem 'paranoia'
+
+# 画像
+gem 'carrierwave'
