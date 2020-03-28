@@ -1,2 +1,37 @@
-<h1>Items#new</h1>
-<p>Find me in app/views/items/new.html.erb</p>
+<h1>商品登録</h1>
+<%= form_with(model: @item, local: true, url: admins_items_path) do |f| %>
+
+    <div class="field">
+        <%= f.label :name, "商品名" %>
+        <%= f.text_field :name %>
+    </div>
+
+    <b>説明文</b>
+    <div class="field">
+        <%= f.text_area :introduction, size: "50x3" %>
+    </div>
+
+    <div class="field">
+        <%= f.label :genre_id, "ジャンル" %>
+        <%= f.select :genre_id, [["ケーキ", 1], ["プリン", 2], ["焼き菓子", 3], ["キャンディ", 4]], prompt: "-- 選択 --" %>
+    </div>
+
+    <div class="field">
+        <%= f.label :price, "税抜価格" %>
+        <%= f.number_field :price, min: 0 %>円
+    </div>
+
+    <div class="field">
+        <%= f.label :sales_status, "販売ステータス" %>
+        <%= f.radio_button :sales_status, true, checked: true %>販売中
+        <%= f.radio_button :sales_status, false %>売切れ
+    </div>
+
+    <div class="field">
+        <%= f.label :picture, "画像" %>
+        <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+    </div>
+	
+	<%= f.submit "更新" %>
+
+<% end %>

@@ -100,7 +100,7 @@ table {
     text-align: center;
 }
 
-.deleted-btn {
+.purple-btn {
     display: inline-block;
     border-radius: 50%;
     font-size: 15px;
@@ -110,4 +110,30 @@ table {
     color: black;
     line-height: 11px;
     border: 2px solid $gray;
+}
+
+/* 説明文 */
+.sentence {
+    margin: 2em 0;
+    background: $light-pink;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+
+    .box-title {
+        font-size: 1.2em;
+        background: $dark-pink;
+        padding: 4px;
+        text-align: center;
+        color: #FFF;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+    }
+
+    p {
+        padding: 15px 20px;
+        margin: 0;
+    }
+}
+
+.item-sentence {
+    width: 250px;
 }
