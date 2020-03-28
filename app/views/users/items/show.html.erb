@@ -1,2 +1,23 @@
-<h1>Users::Items#show</h1>
-<p>Find me in app/views/users/items/show.html.erb</p>
+<h1><%= @item.name %></h1>
+
+<div class="col-xs-7">
+
+</div>
+
+<div class="col-xs-5">
+    <div class="item-details">
+        <span class="purple-btn">
+            <%= @item.sales_status ? "販売中" : "売切れ"%>
+        </span>
+        <p>価格(税抜): ￥<%= @item.price %></p>
+        <p>ジャンル: <%= @item.genre.name %></p>
+        <div class="sentence item-sentence">
+            <div class="box-title">説明文</div>
+            <p><%= @item.introduction %></p>
+        </div>
+    </div>
+</div>
+
+<div>
+    <%= link_to  "戻る", items_path, class: "button" %>
+</div>
