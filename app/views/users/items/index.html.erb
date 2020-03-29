@@ -2,19 +2,17 @@
 <table>
     <thead>
         <tr>
-            <th>商品ID</th>
             <th>商品名</th>
             <th>税抜価格</th>
             <th>ジャンル</th>
             <th>販売ステータス</th>
-        </tr>
+        </tr> 
     </thead>
 
     <tbody>
         <% @items.each do |item| %>
         <tr>
-            <td><%= item.id %></td>
-            <td><%= link_to "#{item.name}", admins_item_path(item) %></td>
+            <td><%= link_to "#{item.name}", item %></td>
             <td><%= item.price %></td>
             <td><%= item.genre.name %></td>
             <td><%= item.sales_status ? "販売中" : "売切れ" %></td>

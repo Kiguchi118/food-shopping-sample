@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   scope module: :users do
     resources :users, only:[:show,:edit,:update,:destroy]
+    resources :items, only:[:index,:show]
   end
 
   devise_for :admins, controllers: {
@@ -23,7 +24,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    resources :items, only:[:index,:new,:create,:show,:edit]
+    resources :items, except:[:destroy]
     resources :users, only:[:index,:show,:edit,:update,:destroy] do
       member do
         patch 'restore'
