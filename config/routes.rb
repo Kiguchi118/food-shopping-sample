@@ -15,7 +15,11 @@ Rails.application.routes.draw do
   scope module: :users do
     resources :users, only:[:show,:edit,:update,:destroy]
     resources :items, only:[:index,:show]
-    resources :cart_items, only:[:index,:create,:update,:destroy]
+    resources :cart_items, only:[:index,:create,:update,:destroy] do
+      collection do
+        delete 'clear'
+      end
+    end
   end
 
   devise_for :admins, controllers: {

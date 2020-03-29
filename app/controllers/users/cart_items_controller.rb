@@ -32,6 +32,12 @@ class Users::CartItemsController < ApplicationController
     redirect_to cart_items_url
   end
 
+  def clear
+    CartItem.destroy_all
+    flash[:success] = "カートを空にしました"
+    redirect_to cart_items_url
+  end
+
   private
 
     def cart_item_params

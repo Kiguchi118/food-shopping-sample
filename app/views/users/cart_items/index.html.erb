@@ -27,6 +27,12 @@
     </tbody>
 </table>
 
+<% if @cart_items.any? %>
+    <div class="btn-position">
+        <%= link_to "カートを空にする", clear_cart_items_path, method: :delete, class: "btn btn-warning" %>
+    </div>
+<% end %>
+
 <div class="total-position">
     <h3>小計 (<%= @total_amount %>点) : ￥<%= @total_price %></h3>
 </div>
