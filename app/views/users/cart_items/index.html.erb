@@ -1,2 +1,35 @@
-<h1>Users::CartItems#index</h1>
-<p>Find me in app/views/users/cart_items/index.html.erb</p>
+<h2>カート</h2>
+<table>
+    <thead>
+        <tr>
+            <th>商品名</th>
+            <th>価格(税込)</th>
+            <th>数量</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @cart_items.each do |cart_item| %>
+            <tr>
+                <td><%= cart_item.item.name %></td>
+                <td><%= (cart_item.item.price * 1.1).round %></td>
+                <td>
+                    <%= form_with(model: cart_item, local: true) do |f| %>
+                        <%= f.number_field :amount, min: 0 %>
+                        <%= f.submit "変更" %>
+                    <% end %>
+                </td>
+                <td><%= link_to "削除", cart_item, method: :delete %></td>
+            </tr>
+            <% @total_price += (cart_item.item.price * 1.1 * cart_item.amount).round %>
+            <% @total_amount += cart_item.amount %>
+        <% end %>
+    </tbody>
+</table>
+
+<div class="total-position">
+    <h3>小計 (<%= @total_amount %>点) : ￥<%= @total_price %></h3>
+</div>
+<div class="btn-position">
+    <%= link_to "注文へ進む", class: 'button' %>
+</div>
