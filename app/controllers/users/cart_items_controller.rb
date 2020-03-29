@@ -19,11 +19,17 @@ class Users::CartItemsController < ApplicationController
   end
 
   def update
-
+    cart_item = CartItem.find(params[:id])
+    cart_item.update(cart_item_params)
+    flash[:success] = "数量を変更しました"
+    redirect_to cart_items_url
   end
 
   def destroy
-
+    cart_item = CartItem.find(params[:id])
+    cart_item.destroy
+    flash[:success] = "#{cart_item.item.name}をカートから削除しました"
+    redirect_to cart_items_url
   end
 
   private
