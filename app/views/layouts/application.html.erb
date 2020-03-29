@@ -18,21 +18,11 @@
         </div>
         <ul>
           <% if user_signed_in? %>
-            <li class="logo">ユーザー</li>
-            <li><%= link_to "マイページ", current_user %></li>
-            <li><%= link_to "商品一覧", items_path%></li>
-            <li><%= link_to "カート一覧" %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <%= render 'layouts/user_logged_in' %>
           <% elsif admin_signed_in? %>
-            <li class="logo">管理者</li>
-            <li><%= link_to "受注一覧" %></li>
-            <li><%= link_to "商品登録", admins_items_path %></li>
-            <li><%= link_to "ユーザー情報", admins_users_path %></li>
-            <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+            <%= render 'layouts/admin_logged_in' %>
           <% else %>
-            <li class="logo">ゲストユーザー</li>
-            <li><%= link_to "会員登録", new_user_registration_path %></li>
-            <li><%= link_to "ログイン", new_user_session_path %></li>
+            <%= render 'layouts/user_not_logged_in' %>
           <% end %>
         </ul>
       </div>
