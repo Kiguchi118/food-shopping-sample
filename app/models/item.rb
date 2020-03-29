@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :genre
+  has_many :cart_items
   mount_uploader :picture, PictureUploader
   validate  :picture_size
 
