@@ -33,7 +33,7 @@ class Users::CartItemsController < ApplicationController
   end
 
   def clear
-    CartItem.destroy_all
+    CartItem.where(user_id: current_user.id).destroy_all
     flash[:success] = "カートを空にしました"
     redirect_to cart_items_url
   end

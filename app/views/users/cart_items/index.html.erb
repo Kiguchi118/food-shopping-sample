@@ -29,7 +29,8 @@
 
 <% if @cart_items.any? %>
     <div class="btn-position">
-        <%= link_to "カートを空にする", clear_cart_items_path, method: :delete, class: "btn btn-warning" %>
+        <%= link_to "カートを空にする", clear_cart_items_path, method: :delete,
+                data: { confirm: "本当にカートを空にしますか？" }, class: "btn btn-warning" %>
     </div>
 <% end %>
 
