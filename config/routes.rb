@@ -17,11 +17,19 @@ Rails.application.routes.draw do
     resources :items, only:[:index,:show]
     resources :cart_items, only:[:index,:create,:update,:destroy] do
       collection do
-        delete 'clear'
+        delete 'clear' # カートを空にする
+      end
+    end
+    resources :orders, only:[:new,:index,:show,:create] do
+      collection do
+        get 'confirm'   # 購入情報確認画面
+        post 'storage'  # セッションに保存
+        get 'complete'  # 購入完了画面
       end
     end
   end
 
+  ######## 管理側 ########
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
