@@ -78,3 +78,6 @@ gem 'paranoia'
 
 # 画像
 gem 'carrierwave'
+
+# enum日本語化
+gem 'enum_help'
