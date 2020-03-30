@@ -27,6 +27,7 @@ Rails.application.routes.draw do
         get 'complete'  # 購入完了画面
       end
     end
+    resources :addresses, only:[:index,:create,:edit,:update,:destroy]
   end
 
   ######## 管理側 ########
