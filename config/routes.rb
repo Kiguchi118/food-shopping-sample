@@ -44,6 +44,7 @@ Rails.application.routes.draw do
         patch 'restore'
       end
     end
+    resources :orders, only:[:index,:update,:show]
   end
   
 end
