@@ -1,0 +1,42 @@
+<h2>商品内容</h2>
+<table>
+    <thead>
+        <tr>
+            <th>商品名</th>
+            <th>価格(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @cart_items.each do |cart_item| %>
+            <tr>
+                <td><%= cart_item.item.name %></td>
+                <td><%= (cart_item.item.price * 1.1).round %></td>
+                <td><%= cart_item.amount %></td>
+                <td><%= (cart_item.item.price * 1.1).round * cart_item.amount %></td>
+            </tr>
+            <% @total_amount += cart_item.amount %>
+        <% end %>
+    </tbody>
+</table>
+
+<div class="total-position">
+    <h3>合計 (<%= @total_amount %>点) : ￥<%= session[:order]["total_payment"] %></h3>
+</div>
+
+<h3>支払い方法</h3>
+<b><%= t("enums.order.payment_method.#{@payment_status}") %></b>
+
+<h3>お届け先</h3>
+<b>
+    〒<%= session[:order]["postcode"] %>
+    <%= session[:order]["address_city"] %>
+    <%= session[:order]["address_street"] %>
+    <%= session[:order]["address_building"] %>
+    <%= session[:order]["name"] %>様
+</b>
+
+<div class="btn-position">
+    <%= link_to "注文を確定する", orders_path, method: :post, class: "button" %>
+</div>

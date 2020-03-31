@@ -10,6 +10,7 @@ class Users::OrdersController < ApplicationController
     session[:order] = Order.new()
     session[:order][:user_id] = current_user.id
     session[:order][:payment_method] = params[:order][:payment_method]
+    session[:order][:total_payment] = product_price_calculation(current_user.cart_items) + session[:order][:shipping_cost]
 
     if params[:order][:select_address] == "self"
       session[:order][:postcode] = current_user.postcode
@@ -41,11 +42,23 @@ class Users::OrdersController < ApplicationController
   end
 
   def create
-
+    order = Order.new(session[:order])
+    current_user.cart_items.each do |cart_item|
+      order.order_details.build(
+        item_id: cart_item.item.id,
+        amount: cart_item.amount,
+        purchase_price: cart_item.item.price
+      )
+    end
+    order.save
+    current_user.cart_items.destroy_all
+    redirect_to complete_orders_url
   end
 
-  def comfirm
-
+  def confirm
+    @cart_items = current_user.cart_items
+    @total_amount = 0
+    @payment_status = session[:order]["payment_method"]
   end
 
   def complete
@@ -57,4 +70,15 @@ class Users::OrdersController < ApplicationController
 
   def show
   end
+
+  private
+
+    # 購入商品の合計金額計算(送料なし)
+    def product_price_calculation(cart_items)
+        total = 0
+        cart_items.each do |cart_item|
+            total += (cart_item.item.price * 1.1).round * cart_item.amount
+        end
+        return total
+    end
 end
