@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'users/items#index'
-  
+
   devise_scope :user do
     get 'login', to: 'users/sessions#new', as: :new_user_session
     post 'login', to: 'users/sessions#create', as: :user_session
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
         get 'confirm'   # 購入情報確認画面
         post 'storage'  # セッションに保存
         get 'complete'  # 購入完了画面
+        delete 'cancel' # 注文キャンセル
       end
     end
     resources :addresses, only:[:index,:create,:edit,:update,:destroy]

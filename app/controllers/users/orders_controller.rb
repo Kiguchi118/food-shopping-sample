@@ -65,6 +65,11 @@ class Users::OrdersController < ApplicationController
     session[:order].clear
   end
 
+  def cancel
+    session[:order].clear
+    redirect_to root_url, flash: { success: "注文を中断しました" }
+  end
+
   def index
   end
 
