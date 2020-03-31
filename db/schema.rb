@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2020_03_30_141723) do
     t.integer "order_id"
     t.integer "amount"
     t.integer "purchase_price"
-    t.integer "production_status"
+    t.integer "production_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_order_details_on_item_id"
@@ -87,9 +87,9 @@ ActiveRecord::Schema.define(version: 2020_03_30_141723) do
     t.string "address_street"
     t.string "address_building"
     t.string "name"
-    t.integer "order_status"
+    t.integer "order_status", default: 0
     t.integer "payment_method"
-    t.integer "shipping_cost"
+    t.integer "shipping_cost", default: 800
     t.integer "total_payment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
