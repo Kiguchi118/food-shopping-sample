@@ -23,7 +23,7 @@
                     </td>
                     <td><%= link_to "削除", cart_item, method: :delete %></td>
                 </tr>
-                <% @total_price += (cart_item.item.price * 1.1 * cart_item.amount).round %>
+                <% @total_price += (cart_item.item.price * 1.1).round * cart_item.amount %>
                 <% @total_amount += cart_item.amount %>
             <% end %>
         </tbody>
@@ -38,7 +38,7 @@
         <h3>小計 (<%= @total_amount %>点) : ￥<%= @total_price %></h3>
     </div>
     <div class="btn-position">
-        <%= link_to "注文へ進む", class: 'button' %>
+        <%= link_to "注文へ進む", new_order_path, class: 'button' %>
     </div>
 
     <% else %>
