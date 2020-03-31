@@ -25,17 +25,21 @@
     <h3>合計 (<%= @total_amount %>点) : ￥<%= session[:order]["total_payment"] %></h3>
 </div>
 
-<h3>支払い方法</h3>
-<b><%= t("enums.order.payment_method.#{@payment_status}") %></b>
+<div class="box">
+    <h4>支払い方法</h4>
+    <b><%= t("enums.order.payment_method.#{@payment_status}") %></b>
+</div>
 
-<h3>お届け先</h3>
-<b>
-    〒<%= session[:order]["postcode"] %>
-    <%= session[:order]["address_city"] %>
-    <%= session[:order]["address_street"] %>
-    <%= session[:order]["address_building"] %>
-    <%= session[:order]["name"] %>様
-</b>
+<div class="box">
+    <h4>お届け先</h4>
+    <b>
+        〒<%= session[:order]["postcode"] %>
+        <%= session[:order]["address_city"] %>
+        <%= session[:order]["address_street"] %>
+        <%= session[:order]["address_building"] %>
+        <%= session[:order]["name"] %>様
+    </b>
+</div>
 
 <div class="btn-position">
     <%= link_to "注文を確定する", orders_path, method: :post, class: "button" %>

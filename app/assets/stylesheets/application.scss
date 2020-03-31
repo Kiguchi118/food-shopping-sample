@@ -167,6 +167,19 @@ table {
     width: auto;
 }
 
+/* ボックス */
+.box {
+    width: 50%;
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    margin: 10px auto 20px;
+    padding: 0px 15px 15px;
+    h4 {
+        border-bottom: 1px solid black;
+        padding-bottom: 2px;
+    }
+}
+
 
 @media screen and (max-width: 767px) {
     .contents {
