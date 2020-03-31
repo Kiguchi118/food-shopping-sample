@@ -62,7 +62,7 @@ class Users::OrdersController < ApplicationController
   end
 
   def complete
-
+    session[:order].clear
   end
 
   def index
