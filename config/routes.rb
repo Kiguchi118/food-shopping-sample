@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-
+  root 'users/items#index'
+  
   devise_scope :user do
     get 'login', to: 'users/sessions#new', as: :new_user_session
     post 'login', to: 'users/sessions#create', as: :user_session
