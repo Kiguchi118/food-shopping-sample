@@ -21,7 +21,10 @@ $pink: #ff9191;
 $light-pink: rgb(255, 238, 238);
 $gray: rgb(88, 88, 88);
 
-body {
+.clearfix::after {
+   content: "";
+   display: block;
+   clear: both;
 }
 
 .field {
@@ -164,7 +167,7 @@ table {
 }
 
 .item-sentence {
-    width: auto;
+    width: 70%;
 }
 
 /* ボックス */
