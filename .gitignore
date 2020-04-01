@@ -36,5 +36,5 @@ DS_Store
 /.ruby-version
 
 # Ignore uploaded files in development
- /public/uploads/
+/public/uploads/*
  
