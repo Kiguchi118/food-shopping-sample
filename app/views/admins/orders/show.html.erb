@@ -39,22 +39,23 @@
 			<th>購入数</th>
 			<th>小計</th>
 			<th>製作ステータス</th>
-			<th></th>
 		</tr>
 	</thead>
-	<tbody>
-		<% @order.order_details.each do |order_detail| %>
+    <% @order.order_details.each do |order_detail| %>
+	    <tbody>
             <tr>
                 <td><%= order_detail.item.name %></td>
                 <td><%= (order_detail.purchase_price * 1.1).round %></td>
                 <td><%= order_detail.amount %></td>
                 <td><%= (order_detail.purchase_price * 1.1).round * order_detail.amount %></td>
-                <%= form_with(model: order_detail, local: true, url: admins_order_path) do |f| %>
-                    <%= f.hidden_field :id, value: order_detail.id %>
-                    <td><%= f.select :production_status, options_for_select_from_enum(OrderDetail, :production_status) %></td>
-                    <td><%= f.submit '更新', name: "production_status_commit" %></td>
-                <% end %>
+                <td>
+                    <%= form_with(model: order_detail, local: true, url: admins_order_path) do |f| %>
+                        <%= f.hidden_field :id, value: order_detail.id %>
+                        <%= f.select :production_status, options_for_select_from_enum(OrderDetail, :production_status) %>
+                        <%= f.submit '更新', name: "production_status_commit" %>
+                    <% end %>
+                </td>
             </tr>
-		<% end %>
-	</tbody>
+	    </tbody>
+    <% end %>
 </table>
