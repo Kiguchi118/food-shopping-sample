@@ -78,6 +78,7 @@ gem 'paranoia'
 
 # 画像
 gem 'carrierwave'
+gem 'mini_magick'
 
 # enum日本語化
 gem 'enum_help'

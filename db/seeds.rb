@@ -36,7 +36,7 @@ Item.create!(
    genre_id: 1,
    name: "チョコレートケーキ",
    introduction: "甘くて美味しいチョコケーキ！",
-   # picture: open("#{Rails.root}/db/fixtures/img1.jpg"),
+   picture: open("#{Rails.root}/db/fixtures/img1.jpg"),
    price: 500,
    sales_status: true
 )
@@ -44,7 +44,7 @@ Item.create!(
    genre_id: 2,
    name: "抹茶プリン",
    introduction: "甘くて美味しい抹茶プリン！",
-   # picture: open("#{Rails.root}/db/fixtures/img2.jpg"),
+   picture: open("#{Rails.root}/db/fixtures/img2.jpg"),
    price: 250,
    sales_status: true
 )
