@@ -34,3 +34,7 @@ DS_Store
 
 # Ignore ruby version config.
 /.ruby-version
+
+# Ignore uploaded files in development
+/public/uploads/*
+ 

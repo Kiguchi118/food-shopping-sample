@@ -62,3 +62,23 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
+# bootstrap
+gem 'bootstrap-sass'
+gem 'jquery-rails'
+
+# 郵便番号から住所を自動入力
+gem 'jp_prefecture'
+gem 'jquery-rails'
+
+# 論理削除
+gem 'paranoia'
+
+# 画像
+gem 'carrierwave'
+gem 'mini_magick'
+
+# enum日本語化
+gem 'enum_help'

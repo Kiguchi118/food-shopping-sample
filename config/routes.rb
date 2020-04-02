@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'users/items#index'
 
   devise_scope :user do
     get 'login', to: 'users/sessions#new', as: :new_user_session
@@ -12,9 +13,40 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
+  scope module: :users do
+    resources :users, only:[:show,:edit,:update,:destroy]
+    resources :items, only:[:index,:show]
+    resources :cart_items, only:[:index,:create,:update,:destroy] do
+      collection do
+        delete 'clear' # カートを空にする
+      end
+    end
+    resources :orders, only:[:new,:index,:show,:create] do
+      collection do
+        get 'confirm'   # 購入情報確認画面
+        post 'storage'  # セッションに保存
+        get 'complete'  # 購入完了画面
+        delete 'cancel' # 注文キャンセル
+      end
+    end
+    resources :addresses, only:[:index,:create,:edit,:update,:destroy]
+  end
+
+  ######## 管理側 ########
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
     registrations: 'admins/registrations'
   }
+
+  namespace :admins do
+    resources :items, except:[:destroy]
+    resources :users, only:[:index,:show,:edit,:update,:destroy] do
+      member do
+        patch 'restore'
+      end
+    end
+    resources :orders, only:[:index,:update,:show]
+  end
+  
 end

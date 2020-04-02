@@ -1,0 +1,64 @@
+<h2>注文情報入力画面</h2>
+
+<%= form_with(model: @order, local: true, url: storage_orders_path) do |f| %>
+
+    <h3>支払い方法</h3>
+    <% Order.payment_methods.each do |payment_method| %>
+        <div class="checkbox-inline">
+            <%= f.label :"payment_method_#{payment_method[0]}", t("enums.order.payment_method.#{payment_method[0]}") %>
+            <%= f.radio_button :payment_method, payment_method[0] %>
+        </div>
+    <% end %>
+
+    <h3>お届け先</h3>
+    <%= f.radio_button :select_address, :self, checked: true %>
+    <%= f.label :select_address_self, "ご自身の住所" %><br>
+        <p>
+            〒<%= current_user.postcode %>
+            <%= current_user.prefecture_name %>
+            <%= current_user.address_city %>
+            <%= current_user.address_street %>
+            <%= current_user.address_building %>
+        </p>
+        
+    <% if @addresses.any? %>
+        <%= f.radio_button :select_address, :registered %>
+        <%= f.label :select_address_registered, "登録済住所から選択" %><br>
+            <div class="field">
+                <%= f.collection_select :exis_address_id, @addresses, :id, :address, prompt: "住所を選択してください" %>
+            </div>
+    <% end %>
+        
+    <%= f.radio_button :select_address, :new %>
+    <%= f.label :select_address_new, "新しいお届け先" %><br>
+
+        <div class="field">
+            <%= f.label :postcode, "郵便番号" %><br />
+            <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %>
+        </div>   
+
+        <div class="field">
+            <%= f.label :prefecture_name, "都道府県" %><br />
+        　  <%= f.collection_select :prefecture_name, JpPrefecture::Prefecture.all, :name, :name, include_blank: "都道府県を選択してください" %>
+        </div> 
+
+        <div class="field">
+            <%= f.label :address_city, "市町村" %><br />
+            <%= f.text_field :address_city, autofocus: true, autocomplete: "address_city" %>   
+        </div>
+
+        <div class="field">
+            <%= f.label :address_street, "番地" %><br />
+            <%= f.text_field :address_street, autofocus: true, autocomplete: "address_street" %>   
+        </div>
+
+        <div class="field">
+            <%= f.label :address_building, "建物名" %><br />
+            <%= f.text_field :address_building, autofocus: true, autocomplete: "address_building" %>   
+        </div>
+    
+        <div>
+            <%= f.submit "確認画面へ進む", class: "button" %>
+        </div>
+
+<% end %>

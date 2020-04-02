@@ -1,0 +1,49 @@
+<h2>カート</h2>
+
+<% if @cart_items.any? %>
+    <table>
+        <thead>
+            <tr>
+                <th>商品名</th>
+                <th>価格(税込)</th>
+                <th>数量</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @cart_items.each do |cart_item| %>
+                <tr>
+                    <td><%= cart_item.item.name %></td>
+                    <td><%= (cart_item.item.price * 1.1).round %></td>
+                    <td>
+                        <%= form_with(model: cart_item, local: true) do |f| %>
+                            <%= f.number_field :amount, min: 1 %>
+                            <%= f.submit "変更" %>
+                        <% end %>
+                    </td>
+                    <td><%= link_to "削除", cart_item, method: :delete %></td>
+                </tr>
+                <% @total_price += (cart_item.item.price * 1.1).round * cart_item.amount %>
+                <% @total_amount += cart_item.amount %>
+            <% end %>
+        </tbody>
+    </table>
+
+    <div class="btn-position">
+        <%= link_to "カートを空にする", clear_cart_items_path, method: :delete,
+                data: { confirm: "本当にカートを空にしますか？" }, class: "btn btn-warning" %>
+    </div>
+
+    <div class="total-position">
+        <h3>小計 (<%= @total_amount %>点) : ￥<%= @total_price %></h3>
+    </div>
+    <div class="btn-position">
+        <%= link_to "注文へ進む", new_order_path, class: 'button' %>
+    </div>
+
+    <% else %>
+        <h2>カートは空です</h2>
+        <h2>商品を見てみましょう！</h2>
+        <%= link_to "商品一覧へ", items_path, class: "button" %>
+
+<% end %>

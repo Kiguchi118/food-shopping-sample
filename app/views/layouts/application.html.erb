@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CakeShopping</title>
+    <title>Cake Shopping</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="contents">
+        <div class="headline">
+          <%= link_to "Cake Shopping" %>
+        </div>
+        <ul>
+          <% if user_signed_in? %>
+            <%= render 'layouts/user_logged_in' %>
+          <% elsif admin_signed_in? %>
+            <%= render 'layouts/admin_logged_in' %>
+          <% else %>
+            <%= render 'layouts/user_not_logged_in' %>
+          <% end %>
+        </ul>
+      </div>
+    </header>
+
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+      <%= yield %>
+    </div>
+
   </body>
 </html>

@@ -1,0 +1,61 @@
+<h2>注文詳細</h2>
+
+<h3>ご注文者情報</h3>
+<table>
+    <tr>
+        <th>お客様</th>
+        <td><%= @order.name %> 様</td>
+    </tr>
+    <tr>
+        <th>配送先</th>
+        <td>
+            〒 <%= @order.postcode %>
+            <%= @order.address_city %>
+            <%= @order.address_street %>
+            <%= @order.address_building %>
+        </td>
+    </tr>
+    <tr>
+        <th>支払い方法</th>
+        <td><%= @order.payment_method_i18n %></td>
+    </tr>
+    <tr>
+        <th>注文ステータス</th>
+        <td>
+            <%= form_with(model: @order, local: true, url: admins_order_path) do |f| %>
+                <%= f.select :order_status, options_for_select_from_enum(Order, :order_status) %>
+                <%= f.submit '更新', name: "order_status_commit" %>
+            <% end %>
+        </td>
+    </tr>
+</table>
+
+<h3>製品情報</h3>
+<table>
+	<thead>
+		<tr>
+			<th>商品名</th>
+			<th>価格(税込)</th>
+			<th>購入数</th>
+			<th>小計</th>
+			<th>製作ステータス</th>
+		</tr>
+	</thead>
+    <% @order.order_details.each do |order_detail| %>
+	    <tbody>
+            <tr>
+                <td><%= order_detail.item.name %></td>
+                <td><%= (order_detail.purchase_price * 1.1).round %></td>
+                <td><%= order_detail.amount %></td>
+                <td><%= (order_detail.purchase_price * 1.1).round * order_detail.amount %></td>
+                <td>
+                    <%= form_with(model: order_detail, local: true, url: admins_order_path) do |f| %>
+                        <%= f.hidden_field :id, value: order_detail.id %>
+                        <%= f.select :production_status, options_for_select_from_enum(OrderDetail, :production_status) %>
+                        <%= f.submit '更新', name: "production_status_commit" %>
+                    <% end %>
+                </td>
+            </tr>
+	    </tbody>
+    <% end %>
+</table>
