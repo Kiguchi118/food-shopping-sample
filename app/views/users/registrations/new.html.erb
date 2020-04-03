@@ -35,7 +35,7 @@
 
   <div class="field">
     <%= f.label :postcode, "郵便番号" %><br />
-    <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %>
+    <%= f.text_field :postcode, size: 12, maxlength: 7, autofocus: true, autocomplete: "postcode" %>
     <input type="button" id="btn" name="btn" value="住所を検索">
   </div>
 
