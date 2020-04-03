@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
   $("#user_postcode").jpostal({
+    click : '#btn',
     postcode : [ "#user_postcode" ],
     address  : {
                   "#user_prefecture_name" : "%3",
