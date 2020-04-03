@@ -4,6 +4,11 @@ class Item < ApplicationRecord
   has_many :order_details, dependent: :destroy
   mount_uploader :picture, PictureUploader
   validate  :picture_size
+  validates :name, presence: true
+  validates :introduction, presence: true, length: { in: 1..500 }
+  validates :genre_id, presence: :true
+  validates :price, presence: true, numericality: { only_integer: true }
+  validates :sales_status, inclusion: { in: [true, false] }
 
   private
   

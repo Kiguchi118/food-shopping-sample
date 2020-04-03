@@ -1,5 +1,6 @@
 <h1>商品登録</h1>
 <%= form_with(model: @item, local: true, url: admins_items_path) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
 
     <div class="field">
         <%= f.label :name, "商品名" %>
