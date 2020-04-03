@@ -1,10 +1,8 @@
 class Users::CartItemsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_cart_items, only:[:index]
 
   def index
-    @cart_items = CartItem.where(user_id: current_user.id)
-    @total_price = 0
-    @total_amount = 0
   end
 
   def create
@@ -13,16 +11,24 @@ class Users::CartItemsController < ApplicationController
       flash[:success] = "カートに商品を入れました"
       redirect_to cart_items_url
     else
-      @item = Item.find(params[:id])
-      render "items/show"
+      @item = Item.find(params[:cart_item][:item_id])
+      unless CartItem.find_by(user_id: params[:cart_item][:user_id],item_id: @item.id).nil?
+        flash.now[:warning] = "この商品は既にお客様のカートに入れてあります"
+      end
+      render "users/items/show"
     end
   end
 
   def update
     cart_item = CartItem.find(params[:id])
-    cart_item.update(cart_item_params)
-    flash[:success] = "数量を変更しました"
-    redirect_to cart_items_url
+    if cart_item.update(cart_item_params)
+      flash[:success] = "#{cart_item.item.name}の数量を変更しました"
+      redirect_to cart_items_url
+    else
+      flash.now[:danger] = "商品の数量を入力してください"
+      set_cart_items
+      render "index"
+    end
   end
 
   def destroy
@@ -42,5 +48,11 @@ class Users::CartItemsController < ApplicationController
 
     def cart_item_params
       params.require(:cart_item).permit(:user_id,:item_id,:amount)
+    end
+
+    def set_cart_items
+      @cart_items = CartItem.where(user_id: current_user.id)
+      @total_price = 0
+      @total_amount = 0
     end
 end

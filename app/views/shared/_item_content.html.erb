@@ -21,6 +21,8 @@
             <div class="cart-item">
                 <h3>注文</h3>
                 <%= form_with(model: @cart_item, local: true) do |f| %>
+                    <%= render 'shared/error_messages', object: f.object %>
+                    
                     <div class="field">
                         <span>個数：</span>
                         <%= f.number_field :amount, min: 1, placeholder: "例）2" %>
