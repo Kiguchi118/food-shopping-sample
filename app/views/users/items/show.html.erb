@@ -2,7 +2,11 @@
 
 <div class="item-content clearfix">
     <div class="item-left">
-        <%= image_tag @item.picture.url, class: "item-img" if @item.picture? %>
+        <% if @item.picture? %>
+            <%= image_tag @item.picture.url, class: "item-img" %>
+        <% else %>
+            <h3>イメージ画像が登録されていません</h3>
+        <% end %>
     </div>
 
     <div class="item-right">
