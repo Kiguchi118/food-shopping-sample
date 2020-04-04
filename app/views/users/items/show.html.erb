@@ -32,10 +32,12 @@
                     <%= f.submit "カートに入れる" %>
                 <% end %>
             </div>
+        <% elsif admin_signed_in? %>
+            <%= link_to "商品を編集する", edit_admins_item_path(@item), class: "button" %>
         <% end %>
     </div>
 </div>
 
 <div class="btn-position", style="clear: left;">
-    <%= link_to  "戻る", items_path, class: "button" %>
+    <%= link_to  "一覧へ戻る", items_path, class: "button" %>
 </div>
