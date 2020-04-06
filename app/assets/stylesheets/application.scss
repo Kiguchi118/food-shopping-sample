@@ -64,7 +64,7 @@ body {
 
 .form_container {
   margin: 15px auto 25px;
-  max-width: 600px;
+  max-width: 750px;
   border: 1px solid $dark-pink;
   border-radius: 4px;
   box-shadow: 0 0 5px gray;
@@ -128,9 +128,10 @@ body {
   input {
     border: 1px solid lightgray;
     border-radius: 2px;
+    box-sizing: border-box;
     padding: 10px 15px;
     font-size: 15px;
-    width: 40%;
+    width: 48%;
     @include placeholder(rgb(180, 180, 180));
     &:focus {
       border: 1px solid $gray;
