@@ -37,6 +37,11 @@ $gray: rgb(88, 88, 88);
     color: $color;
   }
 }
+/* 入力時の色や枠 */
+@mixin field_focus {
+  border: 1px solid $gray;
+  background-color: rgb(206, 235, 253);
+}
 
 body {
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
@@ -113,8 +118,7 @@ body {
   border-radius: 2px;
   @include placeholder(rgb(180, 180, 180));
   &:focus {
-    border: 1px solid $gray;
-    background-color: $light-pink;
+    @include field_focus;
   }
 }
 
@@ -134,8 +138,7 @@ body {
     width: 48%;
     @include placeholder(rgb(180, 180, 180));
     &:focus {
-      border: 1px solid $gray;
-      background-color: $light-pink;
+      @include field_focus;
     }
   }
 }
@@ -155,8 +158,7 @@ body {
     width: 58%;
     @include placeholder(rgb(180, 180, 180));
     &:focus {
-      border: 1px solid $gray;
-      background-color: $light-pink;
+      @include field_focus;
     }
   }
   #btn {
@@ -175,7 +177,6 @@ body {
 }
 
 /* チェックボックスのフォーム */
-
 .field_checkbox {
   display: block; // flexからblockに変更
   border-left: none;
@@ -202,6 +203,34 @@ body {
     }
     &:active {
       transform: translateY(2px);
+    }
+  }
+}
+
+/* バリデーションエラー */
+.field_with_errors {
+  display: contents;
+  input,
+  select {
+    outline: 1px solid red;
+    background-color: rgb(255, 235, 235);
+  }
+  select {
+    border-radius: 0;
+  }
+}
+
+#error_explanation {
+  width: 80%;
+  background-color: rgb(253, 170, 170);
+  margin: 10px auto 30px;
+  padding: 25px;
+  border: 1px solid black;
+  border-radius: 3px;
+  ul {
+    padding: 0 30px;
+    li {
+      line-height: 1.5;
     }
   }
 }
