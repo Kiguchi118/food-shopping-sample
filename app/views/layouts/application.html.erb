@@ -11,29 +11,36 @@
   </head>
 
   <body>
-    <header>
-      <div class="contents">
-        <div class="headline">
-          <%= link_to "Cake Shopping" %>
+    <div class="wrapper">
+      <header>
+        <div class="contents">
+          <div class="headline">
+            <%= link_to "Cake Shopping", root_path %>
+          </div>
+          <ul>
+            <% if user_signed_in? %>
+              <%= render 'layouts/user_logged_in' %>
+            <% elsif admin_signed_in? %>
+              <%= render 'layouts/admin_logged_in' %>
+            <% else %>
+              <%= render 'layouts/user_not_logged_in' %>
+            <% end %>
+          </ul>
         </div>
-        <ul>
-          <% if user_signed_in? %>
-            <%= render 'layouts/user_logged_in' %>
-          <% elsif admin_signed_in? %>
-            <%= render 'layouts/admin_logged_in' %>
-          <% else %>
-            <%= render 'layouts/user_not_logged_in' %>
+      </header>
+
+      <main>
+        <div class="container">
+          <% flash.each do |message_type, message| %>
+            <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
           <% end %>
-        </ul>
-      </div>
-    </header>
+          <%= yield %>
+        </div>
+      </main>
 
-    <div class="container">
-      <% flash.each do |message_type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-      <% end %>
-      <%= yield %>
+      <footer>
+        <p class="footer-text">©︎CAKE-SAMPLE</p>
+      </footer>
     </div>
-
   </body>
 </html>

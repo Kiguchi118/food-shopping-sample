@@ -1,2 +1,47 @@
-<% provide(:url, items_path) %>
-<%= render 'shared/item_content'%>
+<h1><%= @item.name %></h1>
+
+<div class="item-content clearfix">
+    <div class="item-left">
+        <% if @item.picture? %>
+            <%= image_tag @item.picture.url, class: "item-img" %>
+        <% else %>
+            <h3>イメージ画像が登録されていません</h3>
+        <% end %>
+    </div>
+
+    <div class="item-right">
+        <div class="item-details">
+            <span class="purple-btn">
+                <%= @item.sales_status ? "販売中" : "売切れ"%>
+            </span>
+            <p>価格(税抜): ￥<%= @item.price %></p>
+            <p>ジャンル: <%= @item.genre.name %></p>
+            <div class="sentence item-sentence">
+                <div class="box-title">説明文</div>
+                <p><%= @item.introduction %></p>
+            </div>
+        </div>
+        <% if @item.sales_status? && user_signed_in? %>
+            <div class="cart-item">
+                <h3>注文</h3>
+                <%= form_with(model: @cart_item, local: true) do |f| %>
+                    <%= render 'shared/error_messages', object: f.object %>
+                    
+                    <div class="field">
+                        <span>個数：</span>
+                        <%= f.number_field :amount, min: 1, placeholder: "例）2" %>
+                    </div>
+                    <%= f.hidden_field :user_id, value: current_user.id %>
+                    <%= f.hidden_field :item_id, value: @item.id %>
+                    <%= f.submit "カートに入れる" %>
+                <% end %>
+            </div>
+        <% elsif admin_signed_in? %>
+            <%= link_to "商品を編集する", edit_admins_item_path(@item), class: "button" %>
+        <% end %>
+    </div>
+</div>
+
+<div class="btn-position", style="clear: left;">
+    <%= link_to  "一覧へ戻る", items_path, class: "button" %>
+</div>

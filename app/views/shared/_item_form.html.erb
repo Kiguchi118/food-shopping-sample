@@ -1,0 +1,44 @@
+<div class="form_container">
+    <%= form_with(model: @item, local: true, url: yield(:url)) do |f| %>
+        <div class="box_account">
+            <%= render 'shared/error_messages', object: f.object %>
+
+            <div class="field">
+                <%= f.label :name, "商品名", class: "form_label" %>
+                <%= f.text_field :name, class: "form_content", placeholder: "例）チョコレートケーキ" %>
+            </div>
+
+            <b>説明文</b>
+            <div class="field">
+                <%= f.text_area :introduction, size: "50x3", class: "form_content", placeholder: "例）甘くて美味しいチョコケーキ！" %>
+            </div>
+
+            <div class="field">
+                <%= f.label :genre_id, "ジャンル", class: "form_label" %>
+                <%= f.select :genre_id, [["ケーキ", 1], ["プリン", 2], ["焼き菓子", 3], ["キャンディ", 4]], prompt: "選択してください" %>
+            </div>
+
+            <div class="field">
+                <%= f.label :price, "税抜価格", class: "form_label" %>
+                <%= f.number_field :price, min: 0, class: "form_content", placeholder: "例）500（円）" %>
+            </div>
+
+            <div class="field">
+                <%= f.label :sales_status, "販売ステータス", class: "form_label" %>
+                <%= f.label :sales_status_true, "販売中" %>
+                <%= f.radio_button :sales_status, true, checked: true %>
+                <%= f.label :sales_status_false, "売切れ" %>
+                <%= f.radio_button :sales_status, false %>
+            </div>
+
+            <div class="field">
+                <%= f.label :picture, "画像", class: "form_label" %>
+                <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+            </div>
+            
+            <div class="actions">
+                <%= f.submit yield(:btn) %>
+            </div>
+        </div>
+    <% end %>
+</div>

@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :user
   has_many :order_details, dependent: :destroy
-
+  
   enum payment_method: {
     bank_transfer: 0,
     credit_card_payment: 1,
@@ -17,5 +17,7 @@ class Order < ApplicationRecord
     preparing_for_shipment: 3,
     sent: 4
   }
+
+  validates :payment_method, inclusion: {in: Order.payment_methods.keys}
 
 end
