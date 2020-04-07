@@ -190,3 +190,16 @@
     }
   }
 }
+
+/* パスワード忘れた用リンク */
+.pas-forgot {
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none;
+  color: $gray;
+  font-size: 14px;
+  &:hover {
+    text-decoration: underline;
+    color: rgb(196, 196, 196);
+  }
+}
