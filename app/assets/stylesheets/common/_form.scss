@@ -1,7 +1,4 @@
-$light-pink: rgb(255, 238, 238);
-$dark-pink: #ff6e6e;
-$gray: rgb(88, 88, 88);
-$pink: #ff9191;
+@import "color";
 
 /* placeholderの色変更 */
 @mixin placeholder($color) {
