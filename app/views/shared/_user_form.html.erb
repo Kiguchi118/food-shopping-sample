@@ -1,83 +1,82 @@
-<%= form_with(model: model, local: true, url: yield(:url)) do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
+<div class="form_container">
+    <%= form_with(model: model, local: true, url: yield(:url)) do |f| %>
+        <div class="box_account">
+            <%= render 'shared/error_messages', object: f.object %>
 
-    <div class="field">
-        <%= f.label :name, "ユーザー名" %><br />
-        <%= f.text_field :name, autofocus: true, class: "name" %>
-    </div>
+            <div class="field">
+                <%= f.label :name, "ニックネーム", class: "form_label" %>
+                <%= f.text_field :name, autofocus: true, class: "form_content", placeholder: "例）ヤマタロー" %>
+            </div>
 
-    <div class="field">
-        <%= f.label :last_name, "姓" %><br />
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-    </div>
+            <div class="field">
+                <%= f.label :last_name, "お名前", class: "form_label" %>
+                <div class="form_name">
+                    <%= f.text_field :last_name, autofocus: true, placeholder: "姓 例）山田" %>
+                    <%= f.text_field :first_name, autofocus: true, placeholder: "名 例）太郎" %>
+                </div>
+            </div>
 
-    <div class="field">
-        <%= f.label :first_name, "名" %><br />
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-    </div>
+            <div class="field">
+                <%= f.label :last_name_kana, "フリガナ", class: "form_label" %>
+                <div class="form_name">
+                    <%= f.text_field :last_name_kana, autofocus: true, placeholder: "姓 例）ヤマダ" %>
+                    <%= f.text_field :first_name_kana, autofocus: true, placeholder: "名 例）タロウ" %>
+                </div>
+            </div>
 
-    <div class="field">
-        <%= f.label :last_name_kana, "姓（カナ）" %><br />
-        <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana" %>
-    </div>
+            <div class="field">
+                <%= f.label :email, "メールアドレス", class: "form_label" %>
+                <%= f.email_field :email, autofocus: true, class: "form_content", placeholder: "example@example.com" %>
+            </div>
 
-    <div class="field">
-        <%= f.label :first_name_kana, "名（カナ）" %><br />
-        <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
-    </div>
+            <div class="field">
+                <%= f.label :postcode, "郵便番号", class: "form_label" %>
+                <div class="form_post">
+                    <%= f.text_field :postcode, maxlength: 7, autofocus: true, class: "form_input_post", placeholder: "例）1000001（ハイフンなし）" %>
+                    <input type="button" id="btn" name="btn" value="住所を検索">
+                </div>
+            </div>
 
-    <div class="field">
-        <%= f.label :email, "メールアドレス" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
+            <div class="field">
+                <%= f.label :prefecture_name, "都道府県", class: "form_label" %>
+            　  <%= f.collection_select :prefecture_name, JpPrefecture::Prefecture.all, :name, :name, include_blank: '選択してください' %>
+            </div> 
 
-    <div class="field">
-        <%= f.label :postcode, "郵便番号" %><br />
-        <%= f.text_field :postcode, size: 12, maxlength: 7, autofocus: true, autocomplete: "postcode" %>
-        <input type="button" id="btn" name="btn" value="住所を検索">
-    </div>
+            <div class="field">
+                <%= f.label :address_city, "市町村", class: "form_label" %>
+                <%= f.text_field :address_city, autofocus: true, class: "form_content", placeholder: "例）千代田区" %>   
+            </div>
 
-    <div class="field">
-        <%= f.label :prefecture_name, "都道府県" %><br />
-    　<%= f.collection_select :prefecture_name, JpPrefecture::Prefecture.all, :name, :name, include_blank: '-- 選択 --' %>
-    </div> 
+            <div class="field">
+                <%= f.label :address_street, "番地", class: "form_label" %>
+                <%= f.text_field :address_street, autofocus: true, class: "form_content", placeholder: "例）千代田1-1-1" %>   
+            </div>
 
-    <div class="field">
-        <%= f.label :address_city, "市町村" %><br />
-        <%= f.text_field :address_city, autofocus: true, autocomplete: "address_city" %>   
-    </div>
+            <div class="field">
+                <%= f.label :address_building, "建物名", class: "form_label" %>
+                <%= f.text_field :address_building, autofocus: true, class: "form_content", placeholder: "建物名 部屋番号" %>   
+            </div>
 
-    <div class="field">
-        <%= f.label :address_street, "番地" %><br />
-        <%= f.text_field :address_street, autofocus: true, autocomplete: "address_street" %>   
-    </div>
+            <div class="field">
+                <%= f.label :telephone_number, "電話番号", class: "form_label" %>
+                <%= f.text_field :telephone_number, autofocus: true, class: "form_content", placeholder: "例）08012345678（ハイフンなし）" %>
+            </div>
 
-    <div class="field">
-        <%= f.label :address_building, "建物名" %><br />
-        <%= f.text_field :address_building, autofocus: true, autocomplete: "address_building" %>   
-    </div>
+            <% unless user_signed_in? %>
+                <div class="field">
+                    <%= f.label :password, class: "form_label" %>                
+                    <%= f.password_field :password, placeholder: "#{@minimum_password_length}文字以上", class: "form_content" %>
+                </div>
 
-    <div class="field">
-        <%= f.label :telephone_number, "電話番号" %><br />
-        <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
-    </div>
+                <div class="field">
+                    <%= f.label :password_confirmation, class: "form_label" %>
+                    <%= f.password_field :password_confirmation, placeholder: "#{@minimum_password_length}文字以上", class: "form_content" %>
+                </div>
+            <% end %>
 
-    <% unless user_signed_in? %>
-        <div class="field">
-            <%= f.label :password %>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password" %>
-        </div>
-
-        <div class="field">
-            <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <div class="actions">
+                <%= f.submit yield(:btn) %>
+            </div>
         </div>
     <% end %>
-
-    <div class="actions">
-        <%= f.submit "登録する" %>
-    </div>
-<% end %>
+</div>

@@ -1,0 +1,42 @@
+@import "color";
+
+/* ボタン作成 */
+.button {
+  display: inline-block;
+  border-radius: 9%;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  padding: 13px 16px;
+  background-color: $dark-pink;
+  color: #ffffff;
+  line-height: 11px;
+  transition: 0.3s;
+  border: 1px solid $gray;
+  box-shadow: 2px 2px 4px gray;
+}
+
+.button:hover {
+  box-shadow: none;
+  color: $dark-pink;
+  background: #ffffff;
+}
+
+.btn-position {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.purple-btn {
+  display: inline-block;
+  margin-bottom: 15px;
+  box-shadow: 2px 2px 4px gray;
+  border-radius: 50%;
+  font-size: 15px;
+  text-align: center;
+  padding: 11px 11px;
+  background-color: rgb(223, 150, 241);
+  color: black;
+  line-height: 11px;
+  border: 1px solid $gray;
+}

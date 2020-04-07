@@ -1,0 +1,21 @@
+@import "color";
+
+table {
+  width: 80%;
+  margin: 20px auto 40px;
+  border-collapse: collapse;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+  th,
+  td {
+    border: 1px solid $gray;
+    padding: 10px;
+  }
+  th {
+    color: white;
+    background-color: $dark-pink;
+  }
+  td {
+    background-color: $light-pink;
+    text-align: center;
+  }
+}

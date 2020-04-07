@@ -1,10 +1,6 @@
 class Admins::ItemsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_item, only:[:show,:edit,:update]
-  
-  def index
-    @items = Item.all
-  end
+  before_action :set_item, only:[:edit,:update]
 
   def new
     @item = Item.new
@@ -14,13 +10,10 @@ class Admins::ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       flash[:success] = "新しい商品を登録できました"
-      redirect_to admins_items_url
+      redirect_to items_url
     else
       render 'new'
     end
-  end
-
-  def show
   end
 
   def edit
@@ -28,8 +21,8 @@ class Admins::ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      flash[:success] = "商品を更新することができました"
-      redirect_to admins_item_url(@item)
+      flash[:success] = "商品を編集することができました"
+      redirect_to @item
     else
       render "edit"
     end
