@@ -11,3 +11,14 @@ $ ->
                   "#user_address_street"          : "%5%6%7"
                 }
   })
+
+$ ->
+  $("#address_postcode").jpostal({
+    click : '#btn',
+    postcode : [ "#address_postcode" ],
+    address  : {
+                  "#address_prefecture_name" : "%3",
+                  "#address_address_city"            : "%4",
+                  "#address_address_street"          : "%5%6%7"
+                }
+  })
