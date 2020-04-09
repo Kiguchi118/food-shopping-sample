@@ -34,9 +34,7 @@
     <h3>お届け先</h3>
     <b>
         〒<%= session[:order]["postcode"] %>
-        <%= session[:order]["address_city"] %>
-        <%= session[:order]["address_street"] %>
-        <%= session[:order]["address_building"] %>
+        <%= session[:order]["address"] %>
         <%= session[:order]["name"] %>様
     </b>
 </div>

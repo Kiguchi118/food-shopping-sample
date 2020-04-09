@@ -8,7 +8,7 @@ class Users::AddressesController < ApplicationController
 
   def create
     @address = current_user.addresses.build(address_params)
-    @address.name = current_user.first_name
+    @address.name = current_user.last_name
     if @address.save
       redirect_to addresses_url, flash: { success: "住所を登録できました！" }
     else
@@ -22,7 +22,7 @@ class Users::AddressesController < ApplicationController
 
   def update
     if @address.update(address_params)
-      redirect_to addresses_url, flash: { success: "住所を編集しました！"}
+      redirect_to addresses_url, flash: { success: "登録していた住所を編集しました！"}
     else
       render "edit"
     end
@@ -46,7 +46,6 @@ class Users::AddressesController < ApplicationController
     end
 
     def address_params
-      params.require(:address).permit(:postcode,:prefecture_name,
-                      :address_city,:address_street,:address_building)
+      params.require(:address).permit(:postcode,:prefecture_name,:address)
     end
 end

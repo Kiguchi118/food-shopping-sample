@@ -4,9 +4,7 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.references :user, foreign_key: true
       t.integer :postcode
       t.string :prefecture_name
-      t.string :address_city
-      t.string :address_street
-      t.string :address_building
+      t.string :address
       t.string :name
 
       t.timestamps

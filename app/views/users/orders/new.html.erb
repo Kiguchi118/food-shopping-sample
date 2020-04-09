@@ -17,9 +17,7 @@
         <p>
             〒<%= current_user.postcode %>
             <%= current_user.prefecture_name %>
-            <%= current_user.address_city %>
-            <%= current_user.address_street %>
-            <%= current_user.address_building %>
+            <%= current_user.address %>
         </p>
         
     <% if @addresses.any? %>
@@ -44,18 +42,8 @@
         </div> 
 
         <div class="field">
-            <%= f.label :address_city, "市町村" %><br />
-            <%= f.text_field :address_city, autofocus: true, autocomplete: "address_city" %>   
-        </div>
-
-        <div class="field">
-            <%= f.label :address_street, "番地" %><br />
-            <%= f.text_field :address_street, autofocus: true, autocomplete: "address_street" %>   
-        </div>
-
-        <div class="field">
-            <%= f.label :address_building, "建物名" %><br />
-            <%= f.text_field :address_building, autofocus: true, autocomplete: "address_building" %>   
+            <%= f.label :address, "住所" %><br />
+            <%= f.text_field :address, autofocus: true, autocomplete: "address" %>   
         </div>
     
         <div>

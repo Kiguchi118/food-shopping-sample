@@ -39,9 +39,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :first_name_kana
       t.integer :postcode
       t.string :prefecture_name
-      t.string :address_city
-      t.string :address_street
-      t.string :address_building
+      t.string :address
       t.string :telephone_number
 
       t.timestamps null: false

@@ -4,9 +4,7 @@
     <h3>ご自身の住所（<%= link_to "編集する", edit_user_path(@user) %>）</h3>
     〒<%= @user.postcode %>
     <%= @user.prefecture_name %>
-    <%= @user.address_city %>
-    <%= @user.address_street %>
-    <%= @user.address_building %>
+    <%= @user.address %>
 </div>
 
 <h2>新規住所登録</h2>
@@ -19,9 +17,7 @@
             <div class="address">
                 〒<%= address.postcode %>
                 <%= address.prefecture_name %>
-                <%= address.address_city %>
-                <%= address.address_street %>
-                <%= address.address_building %>
+                <%= address.address %>
             </div>
             <div class="address-edit">
                 <%= link_to "編集", edit_address_path(address) %>

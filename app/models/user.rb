@@ -11,9 +11,7 @@ class User < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :postcode, presence: true
   validates :prefecture_name, presence: true
-  validates :address_city, presence: true
-  validates :address_street, presence: true
-  validates :address_building, presence: true
+  validates :address, presence: true
   validates :telephone_number, presence: true
 
   has_many :cart_items, dependent: :destroy

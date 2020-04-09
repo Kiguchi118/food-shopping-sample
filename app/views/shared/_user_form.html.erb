@@ -43,18 +43,8 @@
             </div> 
 
             <div class="field">
-                <%= f.label :address_city, "市町村", class: "form_label" %>
-                <%= f.text_field :address_city, autofocus: true, class: "form_content", placeholder: "例）千代田区" %>   
-            </div>
-
-            <div class="field">
-                <%= f.label :address_street, "番地", class: "form_label" %>
-                <%= f.text_field :address_street, autofocus: true, class: "form_content", placeholder: "例）千代田1-1-1" %>   
-            </div>
-
-            <div class="field">
-                <%= f.label :address_building, "建物名", class: "form_label" %>
-                <%= f.text_field :address_building, autofocus: true, class: "form_content", placeholder: "建物名 部屋番号" %>   
+                <%= f.label :address, "住所", class: "form_label" %>
+                <%= f.text_field :address, autofocus: true, class: "form_content", placeholder: "例）千代田区 千代田 ..." %>   
             </div>
 
             <div class="field">
