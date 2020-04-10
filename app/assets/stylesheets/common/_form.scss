@@ -203,3 +203,17 @@
     color: rgb(196, 196, 196);
   }
 }
+
+/* 表示のアニメーション */
+.anime {
+  animation: anime1 1s ease;
+}
+
+@keyframes anime1 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -21,7 +21,7 @@
 /* ボタン作成 */
 .button {
   display: inline-block;
-  border-radius: 9%;
+  border-radius: 2px;
   font-size: 20px;
   text-align: center;
   cursor: pointer;
@@ -59,7 +59,7 @@
 }
 
 .btn-green {
-  @include link_btn(#81c59d);
+  @include link_btn(#00bd4f);
   margin-right: 10px;
 }
 

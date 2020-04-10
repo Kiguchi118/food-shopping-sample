@@ -44,6 +44,10 @@ body {
   margin: 0 auto;
 }
 
+.center {
+  margin: 0 auto;
+}
+
 /* 説明文 */
 .sentence {
   margin: 2em 0;
@@ -72,11 +76,11 @@ body {
 
 /* ボックス */
 .box {
-  width: 50%;
+  width: 60%;
   border: 1px solid lightgray;
   border-radius: 6px;
-  margin: 10px auto 35px;
-  padding: 10px 20px;
+  margin: 20px auto 35px;
+  padding: 10px 30px;
   h3 {
     border-bottom: 1px solid black;
     padding-bottom: 1px;
@@ -85,13 +89,7 @@ body {
 
 }
 
-@media screen and (max-width: 767px) {
-  .contents {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .headline {
-    margin-bottom: 6px;
-  }
+.checkbox-inline {
+  line-height: 1.7;
+  margin: 10px 20px;
 }

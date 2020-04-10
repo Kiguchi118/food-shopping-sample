@@ -24,17 +24,22 @@
         <% if @item.sales_status? && user_signed_in? %>
             <div class="cart-item">
                 <h3>注文</h3>
-                <%= form_with(model: @cart_item, local: true) do |f| %>
-                    <%= render 'shared/error_messages', object: f.object %>
-                    
-                    <div class="field">
-                        <span>個数：</span>
-                        <%= f.number_field :amount, min: 1, placeholder: "例）2" %>
-                    </div>
-                    <%= f.hidden_field :user_id, value: current_user.id %>
-                    <%= f.hidden_field :item_id, value: @item.id %>
-                    <%= f.submit "カートに入れる" %>
-                <% end %>
+                <div class="form_container">
+                    <%= form_with(model: @cart_item, local: true) do |f| %>
+                        <div class="box_form">
+                            <%= render 'shared/error_messages', object: f.object %>
+                            <div class="field">
+                                <span>個数：</span>
+                                <%= f.number_field :amount, min: 1, placeholder: "例）2", class: "form_content" %>
+                            </div>
+                            <%= f.hidden_field :user_id, value: current_user.id %>
+                            <%= f.hidden_field :item_id, value: @item.id %>
+                            <div class="actions">
+                                <%= f.submit "カートに入れる" %>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
             </div>
         <% elsif admin_signed_in? %>
             <%= link_to "商品を編集する", edit_admins_item_path(@item), class: "button" %>
