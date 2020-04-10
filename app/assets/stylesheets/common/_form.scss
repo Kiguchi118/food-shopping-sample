@@ -31,7 +31,7 @@
   box-shadow: 0 0 5px gray;
 }
 
-.box_account {
+.box_form {
   padding: 25px;
 }
 
@@ -201,5 +201,19 @@
   &:hover {
     text-decoration: underline;
     color: rgb(196, 196, 196);
+  }
+}
+
+/* 表示のアニメーション */
+.anime {
+  animation: anime1 1s ease;
+}
+
+@keyframes anime1 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
