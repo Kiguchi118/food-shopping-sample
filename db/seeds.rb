@@ -21,9 +21,7 @@ User.create!(
    first_name_kana: 'aaa',
    postcode: 1000004,
    prefecture_name: '東京都',
-   address_city: '千代田区',
-   address_street: '大手町123-4',
-   address_building: 'オオテマチ',
+   address: '千代田区 大手町123-4 オオテマチ',
    telephone_number: '08012120000'
 )
 

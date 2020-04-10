@@ -52,16 +52,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up,
       keys: [:name,:email,:password,:password_confirmation,:last_name,:first_name,
-              :last_name_kana,:first_name_kana,:postcode,:prefecture_name,:address_city,
-              :address_street,:address_building,:telephone_number])
+              :last_name_kana,:first_name_kana,:postcode,:prefecture_name,:address,
+              :telephone_number])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update,
       keys: [:name,:email,:password,:password_confirmation,:last_name,:first_name,
-              :last_name_kana,:first_name_kana,:postcode,:prefecture_name,:address_city,
-              :address_street,:address_building,:telephone_number])
+              :last_name_kana,:first_name_kana,:postcode,:prefecture_name,:address,
+              :telephone_number])
   end
 
   # The path used after sign up.

@@ -16,9 +16,7 @@ ActiveRecord::Schema.define(version: 2020_03_30_141723) do
     t.integer "user_id"
     t.integer "postcode"
     t.string "prefecture_name"
-    t.string "address_city"
-    t.string "address_street"
-    t.string "address_building"
+    t.string "address"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -83,9 +81,7 @@ ActiveRecord::Schema.define(version: 2020_03_30_141723) do
     t.integer "user_id"
     t.integer "postcode"
     t.string "prefecture_name"
-    t.string "address_city"
-    t.string "address_street"
-    t.string "address_building"
+    t.string "address"
     t.string "name"
     t.integer "order_status", default: 0
     t.integer "payment_method"
@@ -109,9 +105,7 @@ ActiveRecord::Schema.define(version: 2020_03_30_141723) do
     t.string "first_name_kana"
     t.integer "postcode"
     t.string "prefecture_name"
-    t.string "address_city"
-    t.string "address_street"
-    t.string "address_building"
+    t.string "address"
     t.string "telephone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

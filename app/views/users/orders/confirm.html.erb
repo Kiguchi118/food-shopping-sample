@@ -26,17 +26,15 @@
 </div>
 
 <div class="box">
-    <h4>支払い方法</h4>
+    <h3>支払い方法</h3>
     <b><%= t("enums.order.payment_method.#{@payment_status}") %></b>
 </div>
 
 <div class="box">
-    <h4>お届け先</h4>
+    <h3>お届け先</h3>
     <b>
         〒<%= session[:order]["postcode"] %>
-        <%= session[:order]["address_city"] %>
-        <%= session[:order]["address_street"] %>
-        <%= session[:order]["address_building"] %>
+        <%= session[:order]["address"] %>
         <%= session[:order]["name"] %>様
     </b>
 </div>
