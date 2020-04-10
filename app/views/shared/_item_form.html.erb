@@ -1,6 +1,6 @@
 <div class="form_container">
     <%= form_with(model: @item, local: true, url: yield(:url)) do |f| %>
-        <div class="box_account">
+        <div class="box_form">
             <%= render 'shared/error_messages', object: f.object %>
 
             <div class="field">
