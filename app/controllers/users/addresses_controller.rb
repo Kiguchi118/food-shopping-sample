@@ -1,9 +1,11 @@
 class Users::AddressesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_addresses_index, only: [:index]
   before_action :set_address, only: [:edit, :update]
 
   def index
+    @address = Address.new
+    @addresses = Address.where(user_id: current_user.id)
+    @user = current_user
   end
 
   def create
@@ -12,7 +14,8 @@ class Users::AddressesController < ApplicationController
     if @address.save
       redirect_to addresses_url, flash: { success: "住所を登録できました！" }
     else
-      set_addresses_index
+      @addresses = Address.where(user_id: current_user.id)
+      @user = current_user
       render "index"
     end
   end
@@ -34,12 +37,6 @@ class Users::AddressesController < ApplicationController
   end
 
   private
-
-    def set_addresses_index
-      @new_address = Address.new
-      @addresses = Address.where(user_id: current_user.id)
-      @user = current_user
-    end
 
     def set_address
       @address = Address.find(params[:id])

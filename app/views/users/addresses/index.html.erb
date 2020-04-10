@@ -8,7 +8,7 @@
 </div>
 
 <h2>新規住所登録</h2>
-<%= render 'shared/address_form', model: @new_address %>
+<%= render 'shared/address_form', model: @address %>
 
 <% if @addresses.present? %>
     <h2>登録済み住所</h2>
@@ -20,8 +20,8 @@
                 <%= address.address %>
             </div>
             <div class="address-edit">
-                <%= link_to "編集", edit_address_path(address) %>
-                <%= link_to "削除", address, method: :delete %>
+                <%= link_to "編集", edit_address_path(address), class: "btn-green" %>
+                <%= link_to "削除", address, method: :delete, class: "btn-red" %>
             </div>
         </div>
     <% end %>
