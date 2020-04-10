@@ -1,2 +1,33 @@
-<h1>Users::Addresses#index</h1>
-<p>Find me in app/views/users/addresses/index.html.erb</p>
+<% provide(:btn_name, "登録する") %>
+
+<div class="btn-position">
+    <input type="button" value="住所を新しく登録する" onclick="clickBtn()" class="button" >
+</div>
+<%= render 'shared/address_form', model: @address %>
+
+
+<div class="box">
+    <h3>ご自身の住所（<%= link_to "編集する", edit_user_path(@user) %>）</h3>
+    〒<%= @user.postcode %>
+    <%= @user.prefecture_name %>
+    <%= @user.address %>
+</div>
+
+<% if @addresses.present? %>
+    <div class="box">
+        <h3>登録済み住所</h3>
+        <% @addresses.each do |address| %>
+            <div class="box">
+                <div class="address">
+                    〒<%= address.postcode %>
+                    <%= address.prefecture_name %>
+                    <%= address.address %>
+                </div>
+                <div class="address-edit">
+                    <%= link_to "編集", edit_address_path(address), class: "btn-green" %>
+                    <%= link_to "削除", address, method: :delete, class: "btn-red" %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+<% end %>

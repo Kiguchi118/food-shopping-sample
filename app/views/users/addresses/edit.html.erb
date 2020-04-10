@@ -1,2 +1,4 @@
-<h1>Users::Addresses#edit</h1>
-<p>Find me in app/views/users/addresses/edit.html.erb</p>
+<% provide(:btn_name, "編集する") %>
+
+<h2>登録住所の編集</h2>
+<%= render 'shared/address_form', model: @address %>

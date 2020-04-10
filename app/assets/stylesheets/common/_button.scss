@@ -1,9 +1,27 @@
 @import "color";
 
+@mixin link_btn($color) {
+  display: inline-block;
+  padding: 0.3em 0.7em;
+  text-decoration: none;
+  background: $color;
+  color: #FFF;
+  border-bottom: solid 3px #627295;
+  border-radius: 3px;
+  &:hover {
+    font-size: 1.2em;
+  }
+  &:active {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+    border-bottom: none;
+  }
+}
+
 /* ボタン作成 */
 .button {
   display: inline-block;
-  border-radius: 9%;
+  border-radius: 2px;
   font-size: 20px;
   text-align: center;
   cursor: pointer;
@@ -14,12 +32,11 @@
   transition: 0.3s;
   border: 1px solid $gray;
   box-shadow: 2px 2px 4px gray;
-}
-
-.button:hover {
-  box-shadow: none;
-  color: $dark-pink;
-  background: #ffffff;
+  &:hover {
+    box-shadow: none;
+    color: $dark-pink;
+    background: #ffffff;
+  }
 }
 
 .btn-position {
@@ -39,4 +56,13 @@
   color: black;
   line-height: 11px;
   border: 1px solid $gray;
+}
+
+.btn-green {
+  @include link_btn(#00bd4f);
+  margin-right: 10px;
+}
+
+.btn-red {
+  @include link_btn(rgb(252, 63, 16));
 }
