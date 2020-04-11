@@ -21,7 +21,7 @@ class Users::OrdersController < ApplicationController
         session[:order][:postcode] = current_user.postcode
         session[:order][:prefecture_name] = current_user.prefecture_name
         session[:order][:address] = current_user.address
-        session[:order][:name] = current_user.first_name
+        session[:order][:name] = current_user.last_name
 
       elsif session[:select_address] == "registered"
         address = Address.find(params[:order][:exis_address_id])
@@ -35,7 +35,7 @@ class Users::OrdersController < ApplicationController
         session[:order][:postcode] = session[:address][:postcode] = params[:order][:postcode]
         session[:order][:prefecture_name] = session[:address][:prefecture_name] = params[:order][:prefecture_name]
         session[:order][:address] = session[:address][:address] = params[:order][:address]
-        session[:order][:name] = session[:address][:name] = current_user.first_name
+        session[:order][:name] = session[:address][:name] = current_user.last_name
       
       end
       redirect_to confirm_orders_url
