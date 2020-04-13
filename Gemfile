@@ -87,3 +87,7 @@ gem 'mini_magick'
 
 # enum日本語化
 gem 'enum_help'
+
+# faker
+gem 'faker'
+gem 'gimei'

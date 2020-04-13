@@ -11,19 +11,39 @@ Admin.create!(
    password: 'tttttt'
 )
 
+gimei = Gimei.name
+address = Faker::Address
 User.create!(
-   name: 'exa',
-   email: 'a@a.com',
+   name: gimei.kanji,
+   email: 'a@a',
    password: 'aaaaaa',
-   last_name: 'exa',
-   first_name: 'aaa',
-   last_name_kana: 'exa',
-   first_name_kana: 'aaa',
-   postcode: 1000004,
-   prefecture_name: '東京都',
-   address: '千代田区 大手町123-4 オオテマチ',
-   telephone_number: '08012120000'
+   last_name: gimei.last.hiragana,
+   first_name: gimei.first.hiragana,
+   last_name_kana: gimei.last.katakana,
+   first_name_kana: gimei.first.katakana,
+   postcode: address.postcode,
+   prefecture_name: address.state,
+   address: address.city,
+   telephone_number: '080-0303-1221'
 )
+
+49.times do |n|
+   gimei = Gimei.name
+   address = Faker::Address
+   User.create!(
+      name: gimei.kanji,
+      email: Faker::Internet.email,
+      password: 'aaaaaa',
+      last_name: gimei.last.hiragana,
+      first_name: gimei.first.hiragana,
+      last_name_kana: gimei.last.katakana,
+      first_name_kana: gimei.first.katakana,
+      postcode: address.postcode,
+      prefecture_name: address.state,
+      address: address.city,
+      telephone_number: "0#{n}0-#{n+10}03-#{n+18}21"
+   )
+end
 
 Genre.create!(name: 'ケーキ')
 Genre.create!(name: 'プリン')
