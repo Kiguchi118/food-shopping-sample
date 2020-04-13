@@ -14,10 +14,12 @@ function clickAddressBtn() {
     const form2 = document.getElementById("form_2");
     const new_address = document.getElementById("order_select_address_new");
 
-    if (exis_address.checked == false) {
-        form1.style.display = "none";
-    } else {
-        form1.style.display = "block";
+    if (exis_address != null) {
+        if (exis_address.checked === false) {
+            form1.style.display = "none";
+        } else {
+            form1.style.display = "block";
+        }
     }
 
     if (new_address.checked == false) {

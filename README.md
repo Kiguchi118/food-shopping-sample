@@ -1,24 +1,15 @@
-# README
+# ケーキ屋のショッピングサイト
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+商品をカートに入れ，購入するといった機能がある．  
+細かい修正は未だできていない．
 
-Things you may want to cover:
+とりあえず，Herokuで公開するだけした（S3など特に利用していない）  
+→ <https://cake-shopping-app.herokuapp.com/>
 
-* Ruby version
+***
 
-* System dependencies
+* 管理者
+  * admins/sign_in でログインできる．
+    > メールアドレス: "test@t"
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    > パスワード: "tttttt"（tが6こ）

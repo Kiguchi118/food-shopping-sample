@@ -5,33 +5,72 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+##### 管理者 #####
 Admin.create!(
    name: 'testtest',
    email: 'test@t',
    password: 'tttttt'
 )
 
+##### ユーザー #####
+gimei = Gimei.name
+address = Faker::Address
 User.create!(
-   name: 'exa',
-   email: 'a@a.com',
+   name: gimei.kanji,
+   email: 'a@a',
    password: 'aaaaaa',
-   last_name: 'exa',
-   first_name: 'aaa',
-   last_name_kana: 'exa',
-   first_name_kana: 'aaa',
-   postcode: 1000004,
-   prefecture_name: '東京都',
-   address: '千代田区 大手町123-4 オオテマチ',
-   telephone_number: '08012120000'
+   last_name: gimei.last.hiragana,
+   first_name: gimei.first.hiragana,
+   last_name_kana: gimei.last.katakana,
+   first_name_kana: gimei.first.katakana,
+   postcode: address.postcode,
+   prefecture_name: address.state,
+   address: address.city,
+   telephone_number: '080-0303-1221'
 )
 
-Genre.create!(name: 'ケーキ')
-Genre.create!(name: 'プリン')
-Genre.create!(name: '焼き菓子')
-Genre.create!(name: 'キャンディ')
+49.times do |n|
+   gimei = Gimei.name
+   address = Faker::Address
+   User.create!(
+      name: gimei.kanji,
+      email: Faker::Internet.email,
+      password: 'aaaaaa',
+      last_name: gimei.last.hiragana,
+      first_name: gimei.first.hiragana,
+      last_name_kana: gimei.last.katakana,
+      first_name_kana: gimei.first.katakana,
+      postcode: address.postcode,
+      prefecture_name: address.state,
+      address: address.city,
+      telephone_number: "0#{n}0-#{n+10}03-#{n+18}21"
+   )
+end
+
+##### ジャンル #####
+Genre.create!(name: '和食')
+Genre.create!(name: 'アジア料理')
+Genre.create!(name: 'ヨーロッパ料理')
+Genre.create!(name: '肉料理')
+Genre.create!(name: '鍋料理')
+Genre.create!(name: 'スイーツ')
+
+
+##### 商品 #####
+50.times do |n|
+   food = Faker::Food
+   Item.create(
+      genre_id: rand(1..5),
+      name: food.dish,
+      introduction: food.description,
+      price: rand(1..10) * 100,
+      sales_status: true
+   )
+end
 
 Item.create!(
-   genre_id: 1,
+   genre_id: 6,
    name: "チョコレートケーキ",
    introduction: "甘くて美味しいチョコケーキ！",
    picture: open("#{Rails.root}/app/assets/images/img1.jpg"),
@@ -39,7 +78,7 @@ Item.create!(
    sales_status: true
 )
 Item.create!(
-   genre_id: 2,
+   genre_id: 6,
    name: "抹茶プリン",
    introduction: "甘くて美味しい抹茶プリン！",
    picture: open("#{Rails.root}/app/assets/images/img2.jpg"),
