@@ -41,9 +41,9 @@
         <%= link_to "注文へ進む", new_order_path, class: 'button', data: { "turbolinks" => false } %>
     </div>
 
-    <% else %>
-        <h2>カートは空です</h2>
-        <h2>商品を見てみましょう！</h2>
-        <%= link_to "商品一覧へ", items_path, class: "button" %>
+<% else %>
+    <h2>カートは空です</h2>
+    <h2>商品を見てみましょう！</h2>
+    <%= link_to "商品一覧へ", items_path, class: "button" %>
 
 <% end %>
