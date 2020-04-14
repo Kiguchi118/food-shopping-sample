@@ -20,8 +20,8 @@ User.create!(
    name: gimei.kanji,
    email: 'a@a',
    password: 'aaaaaa',
-   last_name: gimei.last.hiragana,
-   first_name: gimei.first.hiragana,
+   last_name: gimei.last.kanji,
+   first_name: gimei.first.kanji,
    last_name_kana: gimei.last.katakana,
    first_name_kana: gimei.first.katakana,
    postcode: address.postcode,
@@ -37,14 +37,14 @@ User.create!(
       name: gimei.kanji,
       email: Faker::Internet.email,
       password: 'aaaaaa',
-      last_name: gimei.last.hiragana,
-      first_name: gimei.first.hiragana,
+      last_name: gimei.last.kanji,
+      first_name: gimei.first.kanji,
       last_name_kana: gimei.last.katakana,
       first_name_kana: gimei.first.katakana,
       postcode: address.postcode,
       prefecture_name: address.state,
       address: address.city,
-      telephone_number: "0#{n}0-#{n+10}03-#{n+18}21"
+      telephone_number: "0#{n}-#{n+10}03-#{n+18}21"
    )
 end
 
