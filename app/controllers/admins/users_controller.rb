@@ -3,7 +3,7 @@ class Admins::UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
 
   def index
-    @users = User.with_deleted
+    @users = User.with_deleted.page(params[:page]).per(20)
   end
 
   def show

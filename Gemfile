@@ -87,3 +87,11 @@ gem 'mini_magick'
 
 # enum日本語化
 gem 'enum_help'
+
+# サンプルデータ作成
+gem 'faker'
+gem 'gimei'
+
+# ページネーション
+gem 'kaminari'
+gem 'kaminari-bootstrap'

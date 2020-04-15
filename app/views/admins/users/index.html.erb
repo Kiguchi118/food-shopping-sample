@@ -7,6 +7,9 @@
             <th>退会</th>
         </tr>
     </thead>
+    <div class="pager">
+        <%= paginate @users %>
+    </div>
     <tbody>
         <% @users.each do |user| %>
         <tr>
@@ -21,3 +24,6 @@
         <% end %>
     </tbody>
 </table>
+<div class="pager">
+    <%= paginate @users %>
+</div>

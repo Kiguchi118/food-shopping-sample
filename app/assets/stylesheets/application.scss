@@ -13,14 +13,14 @@
  *= require_tree .
  *= require_self
  */
-// @import "bootstrap-sprockets";
-// @import "bootstrap";
+
 @import "./common/color";
-@import "./common/form";
-@import "./common/table";
-@import "./common/button";
-@import "./header";
-@import "./footer";
+// @import "./common/form";
+// @import "./common/pagination";
+// @import "./common/table";
+// @import "./common/button";
+// @import "./header";
+// @import "./footer";
 
 body {
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
