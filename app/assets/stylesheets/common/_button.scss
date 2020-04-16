@@ -66,3 +66,16 @@
 .btn-red {
   @include link_btn(rgb(252, 63, 16));
 }
+
+/* いいねボタン系 */
+.buttons_like {
+  margin: 20px 0;
+}
+
+.liked_button {
+  @include link_btn(#e262d1);
+}
+
+.like_button {
+  @include link_btn(#566462);
+}

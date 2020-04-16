@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :addresses, dependent: :destroy
+  has_many :likes
+  has_many :like_items, through: :likes, source: :item
 
   include JpPrefecture
   jp_prefecture :prefecture_code
