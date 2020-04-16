@@ -1,0 +1,30 @@
+<h2>いいね一覧</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>商品イメージ</th>
+            <th>商品名</th>
+            <th>税抜価格(円)</th>
+            <th>ジャンル</th>
+            <th>販売ステータス</th>
+        </tr> 
+    </thead>
+    <div class="pager">
+        <%= paginate @like_items %>
+    </div>
+    <tbody>
+       <% @like_items.each do |like_item| %>
+        <tr>
+            <td><%= image_tag like_item.picture.thumb.url if like_item.picture? %></td>
+            <td><%= link_to "#{like_item.name}", like_item %></td>
+            <td><%= like_item.price %></td>
+            <td><%= like_item.genre.name %></td>
+            <td><%= like_item.sales_status ? "販売中" : "売切れ" %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+<div class="pager">
+    <%= paginate @like_items %>
+</div>
