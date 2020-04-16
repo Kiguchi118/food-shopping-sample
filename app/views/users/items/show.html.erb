@@ -16,6 +16,9 @@
             </span>
             <p>価格(税抜): ￥<%= @item.price %></p>
             <p>ジャンル: <%= @item.genre.name %></p>
+            <div class="buttons_like">
+                <%= render 'users/likes/like' %>
+            </div>
             <div class="sentence item-sentence">
                 <div class="box-title">説明文</div>
                 <p><%= @item.introduction %></p>

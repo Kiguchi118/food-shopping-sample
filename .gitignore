@@ -38,3 +38,4 @@ DS_Store
 # Ignore uploaded files in development
 /public/uploads/*
  
+/.env
