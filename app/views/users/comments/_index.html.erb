@@ -1,0 +1,30 @@
+<% flash.each do |message_type, message| %>
+    <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+<% end %>
+
+<p class="comment-count"><%= comments.count %>件のレビュー</p>
+
+<% if user_signed_in? %>
+    <div class="comment-create">
+        <%= render 'users/comments/comment_form' %>
+    </div>
+<% end %>
+
+<% comments.each do |comment| %>
+  <% unless comment.id.nil? %>
+    <div class="comment-text">
+        <p>
+            <%= comment.user.name %>
+            <span class="comment-date">
+                <%= l comment.created_at %>
+            </span>
+            <% if comment.user == current_user %>
+                <%= link_to "削除", "#{item.id}/comments/#{comment.id}", method: :delete, remote: true, class: "comment_destroy" %>
+            <% end %>
+        </p>
+        <div class="comment-content">
+            <%= simple_format(comment.content) %>
+        </div>
+    </div>
+  <% end %>
+<% end %>

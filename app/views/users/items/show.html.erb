@@ -50,6 +50,14 @@
     </div>
 </div>
 
+<hr>
+
+<div class="comment-box">
+    <div id="comments_area">
+        <%= render 'users/comments/index', comments: @comments, item: @item %>
+    </div>
+</div>
+
 <div class="btn-position", style="clear: left;">
     <%= link_to  "一覧へ戻る", items_path, class: "button" %>
 </div>
