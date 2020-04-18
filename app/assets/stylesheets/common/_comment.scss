@@ -1,0 +1,56 @@
+@import "color";
+@import "button";
+
+.comment-box {
+  padding: 2em;
+
+  .comment-count {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+  }
+
+  .comment-text {
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid gray;
+    border-radius: 4px;
+    box-shadow: 0 0 5px gray;
+
+    .comment-date {
+      font-size: 0.8em;
+      color: gray;
+    }
+
+    .comment-content {
+      padding: 0.8em 0.8em 0;
+    }
+
+    .comment_destroy {
+      @include link_btn(rgb(255, 139, 139));
+      font-size: 0.7em;
+      margin-left: 10px;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    font-size: 14px;
+    min-width: 70%;
+    min-height: 70px;
+    padding: 10px;
+    border-radius: 4px;
+
+    &:focus {
+      border: 2px solid green;
+      background-color: rgb(227, 247, 201);
+    }
+  }
+
+  .comment-create {
+    .comment-post {
+      @include link_btn(rgb(9, 136, 62));
+      font-size: 1.1em;
+      margin: 10px;
+    }
+  }
+}

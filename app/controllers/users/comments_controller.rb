@@ -1,9 +1,10 @@
 class Users::CommentsController < ApplicationController
 
   def create
-    @comment = current_user.comments.build(comment_params)
-    @comment.save
-    @item = Item.find(@comment.item_id)
+    comment = current_user.comments.build(comment_params)
+    comment.save
+    @item = Item.find(comment.item_id)
+    @comment = Comment.new  # 連続投稿を可能にさせる
     @comments = @item.comments.order(created_at: :desc)
   end
 
@@ -14,9 +15,10 @@ class Users::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find_by(user_id: current_user.id, id: params[:id])
-    @item = Item.find(@comment.item_id)
-    @comment.destroy
+    comment = Comment.find_by(user_id: current_user.id, id: params[:id])
+    @item = Item.find(comment.item_id)
+    comment.destroy
+    @comment = Comment.new
     @comments = @item.comments.order(created_at: :desc)
   end
 
