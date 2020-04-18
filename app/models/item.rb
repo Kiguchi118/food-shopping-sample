@@ -3,7 +3,10 @@ class Item < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
   mount_uploader :picture, PictureUploader
+
   validate  :picture_size
   validates :name, presence: true
   validates :introduction, presence: true, length: { in: 1..500 }

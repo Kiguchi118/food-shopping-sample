@@ -50,6 +50,21 @@
     </div>
 </div>
 
+<hr>
+
+<div class="comment-box">
+    <% if user_signed_in? %>
+        <div class="comment-create">
+            <h2>レビューを投稿する</h2>
+            <%= render 'users/comments/comment_form', comment: @comment, item: @item %>
+        </div>
+    <% end %>
+    <h2>レビュー</h2>
+    <div id="comments_area">
+        <%= render 'users/comments/index', comments: @comments, item: @item %>
+    </div>
+</div>
+
 <div class="btn-position", style="clear: left;">
     <%= link_to  "一覧へ戻る", items_path, class: "button" %>
 </div>

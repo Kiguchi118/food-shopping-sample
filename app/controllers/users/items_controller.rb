@@ -8,5 +8,7 @@ class Users::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
     @like_count = Like.where(item_id: @item.id).count
+    @comment = Comment.new
+    @comments = @item.comments.order(created_at: :desc)
   end
 end

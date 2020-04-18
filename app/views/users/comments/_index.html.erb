@@ -1,0 +1,17 @@
+<%= comments.count %>件のコメント
+<% comments.each do |comment| %>
+  <% unless comment.id.nil? %>
+    <div class="comment-text">
+        <p><%= comment.user.name %></p>
+        <div class="comment-entry">
+            <%= comment.content %>
+            <% if comment.user == current_user %>
+                <%= link_to "削除", "#{item.id}/comments/#{comment.id}", method: :delete, remote: true, class: "comment_destroy" %>
+            <% end %>
+        </div>
+        <span class="comment-date pull-right">
+            <%= l comment.created_at %>
+        </span>
+    </div>
+  <% end %>
+<% end %>
