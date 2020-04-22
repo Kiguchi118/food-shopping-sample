@@ -53,8 +53,21 @@
 <hr>
 
 <div class="comment-box">
+    <div id="comments_head">
+        <%= render 'users/comments/header', comments: @comments %>
+    </div>
+
+    <% if user_signed_in? %>
+        <div class="comment-create">
+            <%= form_with(model: [@item, @comment], url: item_comments_path(@item), data:{remote: true}) do |f| %>
+                <%= f.text_area :content, placeholder: "レビューを投稿..." %>
+                <%= f.submit "投稿", class: "comment-post" %>
+            <% end %>
+        </div>
+    <% end %>
+
     <div id="comments_area">
-        <%= render 'users/comments/index', comments: @comments, item: @item %>
+        <%= render 'users/comments/index', comments: @comments %>
     </div>
 </div>
 
