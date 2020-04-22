@@ -1,5 +1,13 @@
 <h2>管理人ログイン</h2>
 
+<%= form_with(model: Admin.new, url: admin_session_path, local: true) do |f| %>
+  <%= f.hidden_field :email, value: "test@t" %>
+  <%= f.hidden_field :password, value: "tttttt" %>
+  <div class="btn-position">
+    <%= f.submit "管理人でログイン", class:"btn-green" %> 
+  </div>
+<% end %>
+
 <div class="form_container">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="box_form">
@@ -28,4 +36,3 @@
   <% end %>
 </div>
 
-<%= render "admins/shared/links" %>
