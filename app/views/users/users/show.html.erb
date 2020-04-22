@@ -24,7 +24,7 @@
 
 <% if current_user.email != "test@example.com" %>
     <div class="btn-position">
-        <%= link_to "編集", edit_user_path(@user), class: "button" %>
+        <%= link_to "編集", edit_user_path(@user), class: "btn-pink" %>
     </div>
     <div class="btn-position">
         <%= link_to '退会', @user, method: :delete, data: { confirm: "本当によろしいですか？" }, class: "button" %>

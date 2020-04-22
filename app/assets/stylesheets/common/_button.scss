@@ -1,41 +1,26 @@
 @import "color";
 
-@mixin link_btn($color) {
-  display: inline-block;
-  padding: 0.3em 0.7em;
-  text-decoration: none;
-  background: $color;
-  color: #FFF;
-  border-bottom: solid 3px #627295;
-  border-radius: 3px;
-  &:hover {
-    font-size: 1.2em;
-  }
-  &:active {
-    -webkit-transform: translateY(4px);
-    transform: translateY(4px);
-    border-bottom: none;
-  }
-}
-
-/* ボタン作成 */
-.button {
+@mixin link_btn($font-color, $back-color) {
   display: inline-block;
   border-radius: 2px;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
   cursor: pointer;
   padding: 13px 16px;
-  background-color: $dark-pink;
-  color: #ffffff;
+  background-color: $back-color;
+  color: $font-color;
   line-height: 11px;
   transition: 0.3s;
   border: 1px solid $gray;
   box-shadow: 2px 2px 4px gray;
   &:hover {
     box-shadow: none;
-    color: $dark-pink;
-    background: #ffffff;
+    color: $back-color;
+    background: $font-color;
+  }
+  &:active {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
   }
 }
 
@@ -58,13 +43,20 @@
   border: 1px solid $gray;
 }
 
+.btn-pink {
+  @include link_btn(#ffffff, $dark-pink);
+}
+
 .btn-green {
-  @include link_btn(#00bd4f);
-  margin-right: 10px;
+  @include link_btn(#ffffff, #00bd4f);
 }
 
 .btn-red {
-  @include link_btn(rgb(252, 63, 16));
+  @include link_btn(#ffffff, rgb(252, 63, 16));
+}
+
+.btn-yellow {
+  @include link_btn(#474747, rgb(241, 241, 11));
 }
 
 /* いいねボタン系 */
@@ -73,9 +65,9 @@
 }
 
 .liked_button {
-  @include link_btn(#e262d1);
+  @include link_btn(#ffffff, #e262d1);
 }
 
 .like_button {
-  @include link_btn(#566462);
+  @include link_btn(rgb(252, 252, 129), #566462);
 }

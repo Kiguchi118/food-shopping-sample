@@ -1,5 +1,7 @@
 <%= form_with(model: User.new, url: user_session_path, local: true) do |f| %>
   <%= f.hidden_field :email, value: "test@example.com" %>
   <%= f.hidden_field :password, value: "aaaaaa" %>
-  <%= f.submit "テストユーザでログイン", class:"btn-green btn-position" %> 
+  <div class="btn-position">
+    <%= f.submit "テストユーザでログイン", class:"btn-green" %> 
+  </div>
 <% end %>

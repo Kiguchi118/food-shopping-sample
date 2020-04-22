@@ -26,8 +26,7 @@
     }
 
     .comment_destroy {
-      @include link_btn(rgb(255, 139, 139));
-      font-size: 0.7em;
+      @include link_btn(#ffffff, rgb(221, 48, 48));
       margin-left: 10px;
     }
   }
@@ -48,7 +47,7 @@
 
   .comment-create {
     .comment-post {
-      @include link_btn(rgb(9, 136, 62));
+      @include link_btn(#ffffff, rgb(9, 136, 62));
       font-size: 1.1em;
       margin: 10px;
     }

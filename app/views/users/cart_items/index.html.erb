@@ -31,19 +31,19 @@
 
     <div class="btn-position">
         <%= link_to "カートを空にする", clear_cart_items_path, method: :delete,
-                data: { confirm: "本当にカートを空にしますか？" }, class: "btn btn-warning" %>
+                data: { confirm: "本当にカートを空にしますか？" }, class: "btn-yellow" %>
     </div>
 
     <div class="total-position">
         <h3>小計 (<%= @total_amount %>点) : ￥<%= @total_price %></h3>
     </div>
     <div class="btn-position">
-        <%= link_to "注文へ進む", new_order_path, class: 'button', data: { "turbolinks" => false } %>
+        <%= link_to "注文へ進む", new_order_path, class: 'btn-pink', data: { "turbolinks" => false } %>
     </div>
 
 <% else %>
     <h2>カートは空です</h2>
     <h2>商品を見てみましょう！</h2>
-    <%= link_to "商品一覧へ", items_path, class: "button" %>
+    <%= link_to "商品一覧へ", items_path, class: "btn-pink" %>
 
 <% end %>
