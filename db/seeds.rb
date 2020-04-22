@@ -1,42 +1,31 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 ##### 管理者 #####
 Admin.create!(
-   name: 'testtest',
-   email: 'test@t',
-   password: 'tttttt'
+   name: "testtest",
+   email: "test@t",
+   password: "tttttt"
 )
 
 ##### ユーザー #####
-gimei = Gimei.name
-address = Faker::Address
 User.create!(
-   name: gimei.kanji,
-   email: 'a@a',
-   password: 'aaaaaa',
-   last_name: gimei.last.kanji,
-   first_name: gimei.first.kanji,
-   last_name_kana: gimei.last.katakana,
-   first_name_kana: gimei.first.katakana,
-   postcode: address.postcode,
-   prefecture_name: address.state,
-   address: address.city,
-   telephone_number: '080-0303-1221'
+   name: "テストユーザ",
+   email: "test@example.com",
+   password: "aaaaaa",
+   last_name: "山田",
+   first_name: "太郎",
+   last_name_kana: "ヤマダ",
+   first_name_kana: "タロウ",
+   postcode: 1234567,
+   prefecture_name: "テスト県",
+   address: "テスト市",
+   telephone_number: "999-9999-9999"
 )
-
-49.times do |n|
+29.times do |n|
    gimei = Gimei.name
    address = Faker::Address
    User.create!(
       name: gimei.kanji,
       email: Faker::Internet.email,
-      password: 'aaaaaa',
+      password: "aaaaaa",
       last_name: gimei.last.kanji,
       first_name: gimei.first.kanji,
       last_name_kana: gimei.last.katakana,
@@ -44,17 +33,17 @@ User.create!(
       postcode: address.postcode,
       prefecture_name: address.state,
       address: address.city,
-      telephone_number: "0#{n}-#{n+10}03-#{n+18}21"
+      telephone_number: "0#{n}-#{n+10}-#{n+18}"
    )
 end
 
 ##### ジャンル #####
-Genre.create!(name: '和食')
-Genre.create!(name: 'アジア料理')
-Genre.create!(name: 'ヨーロッパ料理')
-Genre.create!(name: '肉料理')
-Genre.create!(name: '鍋料理')
-Genre.create!(name: 'スイーツ')
+Genre.create!(name: "和食")
+Genre.create!(name: "アジア料理")
+Genre.create!(name: "ヨーロッパ料理")
+Genre.create!(name: "肉料理")
+Genre.create!(name: "鍋料理")
+Genre.create!(name: "スイーツ")
 
 
 ##### 商品 #####

@@ -1,5 +1,6 @@
 class Users::UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :forbid_test_user, only: [:edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
 
@@ -41,6 +42,12 @@ class Users::UsersController < ApplicationController
     def correct_user
       if current_user.id != @user.id
         redirect_to user_path(current_user)
+      end
+    end
+
+    def forbid_test_user
+      if current_user.email == "test@example.com"
+        redirect_to root_url, flash: { denger: "テストユーザのため変更することはできません" }
       end
     end
 end
