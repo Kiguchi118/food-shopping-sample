@@ -28,13 +28,13 @@
 </table>
 
 <div class="btn-position">
-    <%= link_to "編集", edit_admins_user_path(@user), class: "button" %>
+    <%= link_to "編集", edit_admins_user_path(@user), class: "btn-pink" %>
 </div>
 <div class="btn-position">
     <% unless @user.deleted_at? %>
         <%= link_to "退会", admins_user_path(@user), 
-                method: :delete, data: { confirm: "本当によろしいですか？" }, class: "button" %>
+                method: :delete, data: { confirm: "本当によろしいですか？" }, class: "btn-red" %>
     <% else %>
-        <%= link_to "復元", restore_admins_user_path(@user), method: :patch, class: "button" %>
+        <%= link_to "復元", restore_admins_user_path(@user), method: :patch, class: "btn-yellow" %>
     <% end %>
 </div>
