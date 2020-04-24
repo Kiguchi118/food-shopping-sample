@@ -1,5 +1,5 @@
 .top-img {
-  background: url("top_food.jpg") center center / cover no-repeat;
+  background: image-url("top_food.jpg") center center / cover no-repeat;
   padding-top: calc(675 / 900 * 100%); /* calc(画像高さ ÷ 画像横幅 × 100%) */
   width: 100vw;
   height: 0;
