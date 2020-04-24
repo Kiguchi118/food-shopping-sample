@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users/items#index'
+  root 'tops#index'
 
   devise_scope :user do
     get 'login', to: 'users/sessions#new', as: :new_user_session

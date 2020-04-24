@@ -2,7 +2,7 @@
 
 @mixin link_btn($font-color, $back-color) {
   display: inline-block;
-  border-radius: 2px;
+  border-radius: 4px;
   font-size: 18px;
   text-align: center;
   cursor: pointer;
@@ -13,6 +13,7 @@
   transition: 0.3s;
   border: 1px solid $gray;
   box-shadow: 2px 2px 4px gray;
+  text-decoration: none;
   &:hover {
     box-shadow: none;
     color: $back-color;
@@ -51,12 +52,20 @@
   @include link_btn(#ffffff, #00bd4f);
 }
 
+.btn-blue {
+  @include link_btn(#ffffff, rgb(34, 81, 235));
+}
+
 .btn-red {
   @include link_btn(#ffffff, rgb(252, 63, 16));
 }
 
 .btn-yellow {
   @include link_btn(#474747, rgb(241, 241, 11));
+}
+
+.btn-orange {
+  @include link_btn(black, rgb(255, 166, 0));
 }
 
 /* いいねボタン系 */
@@ -70,4 +79,16 @@
 
 .like_button {
   @include link_btn(rgb(252, 252, 129), #566462);
+}
+
+/* 商品コメント系のボタン */
+.comment_destroy {
+  @include link_btn(#ffffff, rgb(221, 48, 48));
+  margin-left: 10px;
+}
+
+.comment-post {
+  @include link_btn(#ffffff, rgb(9, 136, 62));
+  font-size: 1.1em;
+  margin: 10px;
 }

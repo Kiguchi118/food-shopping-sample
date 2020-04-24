@@ -1,5 +1,4 @@
 @import "color";
-@import "button";
 
 .comment-box {
   padding: 2em;
@@ -24,11 +23,6 @@
     .comment-content {
       padding: 0.8em 0.8em 0;
     }
-
-    .comment_destroy {
-      @include link_btn(#ffffff, rgb(221, 48, 48));
-      margin-left: 10px;
-    }
   }
 
   textarea {
@@ -42,14 +36,6 @@
     &:focus {
       border: 2px solid green;
       background-color: rgb(227, 247, 201);
-    }
-  }
-
-  .comment-create {
-    .comment-post {
-      @include link_btn(#ffffff, rgb(9, 136, 62));
-      font-size: 1.1em;
-      margin: 10px;
     }
   }
 }

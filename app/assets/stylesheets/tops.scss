@@ -1,0 +1,48 @@
+.top-img {
+  background: url("top_food.jpg") center center / cover no-repeat;
+  padding-top: calc(675 / 900 * 100%); /* calc(画像高さ ÷ 画像横幅 × 100%) */
+  width: 100vw;
+  height: 0;
+  margin-top: calc(20px * -1);
+  margin-left: calc(((100vw - 100%) / 2) * -1);
+  margin-right: calc(((100vw - 100%) / 2) * -1);
+  position: relative;
+}
+
+.top-content {
+  width: 40%;
+  height: 270px;
+  background-color: rgba(213, 228, 10, 0.795);
+  padding: 2em;
+  border-radius: 4px;
+  box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.28);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+  a {
+    width: 90%;
+    margin-bottom: 8px;
+  }
+  h2 {
+    margin-bottom: 15px;
+  }
+  .btn-position {
+    margin-top: 18px;
+    margin-bottom: 0;
+  }
+}
+
+.item-index {
+  margin: 50px;
+}
+
+@media screen and (max-width: 767px) {
+  .top-content {
+    width: 60%;
+    height: 50%;
+  }
+}
