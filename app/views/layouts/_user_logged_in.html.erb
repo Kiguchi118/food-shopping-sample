@@ -1,6 +1,6 @@
 <li class="logo"><%= current_user.name %>様</li>
 <li><%= link_to "マイページ", current_user %></li>
-<li><%= link_to "いいね", likes_path %></li>
+<li><%= link_to "商品一覧", items_path %></li>
 <li><%= link_to "住所", addresses_path, data: { "turbolinks" => false } %></li>
 <li><%= link_to "カート", cart_items_path %></li>
 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>

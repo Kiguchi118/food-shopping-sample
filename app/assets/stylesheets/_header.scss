@@ -14,7 +14,11 @@ header {
   }
 
   .headline {
-    font-size: 30px;
+    font-size: 5rem;
+    font-family: "SignPainter", "EuphemiaUCAS", "Segoe Script", sans-serif;
+    a {
+      color: rgb(247, 160, 0);
+    }
   }
 
   ul {
