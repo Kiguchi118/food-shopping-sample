@@ -1,17 +1,17 @@
 <div class="top-img">
-    <div class="top-content">
-        <h2>あなたに好物を届けます<i class="fas fa-people-carry fa-lg fa-fw faa-horizontal animated"></i></h2>
+    <div class="top-content anime">
+        <h2>あなたに好物を届けます<i class="fas fa-people-carry fa-lg fa-fw faa-horizontal animated-hover"></i></h2>
         <%= link_to items_path, class: "btn-orange" do %>
             商品を探す
-            <i class="fas fa-box-open"></i>
+            <i class="fas fa-box-open faa-ring animated-hover"></i>
         <% end %>
         <%= link_to new_user_session_path, class: "btn-pink" do %>
             ログイン
-            <i class="fas fa-sign-in-alt fa-fw"></i>
+            <i class="fas fa-sign-in-alt fa-fw faa-ring animated-hover"></i>
         <% end %>
         <%= link_to new_user_registration_path, class: "btn-blue" do %>
             新規登録
-            <i class="fas fa-user-plus"></i>
+            <i class="fas fa-user-plus faa-ring animated-hover"></i>
         <% end %>
         <%= render "shared/login_test_user" %>
     </div>
@@ -27,4 +27,8 @@
             <p><%= item.introduction %></p>
         </div>
     <% end %>
+</div>
+
+<div class="start">
+    <h1>Food Shopping</h1>
 </div>
