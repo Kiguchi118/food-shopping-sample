@@ -47,7 +47,8 @@ class Users::UsersController < ApplicationController
 
     def forbid_test_user
       if current_user.email == "test@example.com"
-        redirect_to root_url, flash: { denger: "テストユーザのため変更することはできません" }
+        flash[:denger] = "テストユーザのため変更することはできません"
+        redirect_back(fallback_location: items_path)
       end
     end
 end
