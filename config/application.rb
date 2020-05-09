@@ -16,6 +16,9 @@ module CakeShopping
 
     config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
 
+    # リダイレクト先の読み込み
+    config.autoload_paths += %W(#{config.root}/lib)
+
     # タイムゾーンを日本時間に設定
     config.time_zone = 'Asia/Tokyo'
 
