@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    resources :items, except:[:index,:show,:destroy]
+    resources :items, only:[:edit,:update]
     resources :users, only:[:index,:show,:edit,:update,:destroy] do
       member do
         patch 'restore'

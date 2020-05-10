@@ -2,20 +2,6 @@ class Admins::ItemsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_item, only:[:edit,:update]
 
-  def new
-    @item = Item.new
-  end
-
-  def create
-    @item = Item.new(item_params)
-    if @item.save
-      flash[:success] = "新しい商品を登録できました"
-      redirect_to items_url
-    else
-      render 'new'
-    end
-  end
-
   def edit
   end
 

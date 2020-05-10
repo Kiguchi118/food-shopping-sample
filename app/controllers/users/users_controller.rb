@@ -1,5 +1,5 @@
 class Users::UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except:[:show]
   before_action :forbid_test_user, only: [:edit, :update, :destroy]
   before_action :set_user, only: [:show, :edit, :update]
   before_action :correct_user, only: [:edit, :update]

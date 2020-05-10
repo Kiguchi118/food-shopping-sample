@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :telephone_number, presence: true
 
+  has_many :items, dependent: :destroy
   has_many :cart_items, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :addresses, dependent: :destroy

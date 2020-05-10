@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_04_17_130954) do
   end
 
   create_table "items", force: :cascade do |t|
+    t.integer "user_id"
     t.integer "genre_id"
     t.string "name"
     t.text "introduction"
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_04_17_130954) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["genre_id"], name: "index_items_on_genre_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|

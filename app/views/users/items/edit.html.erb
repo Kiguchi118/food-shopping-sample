@@ -1,1 +1,6 @@
-<h1>さ</h1>
+<% provide(:url, item_path(@item)) %>
+<% provide(:btn, "編集") %>
+
+<h2>商品を編集する</h2>
+
+<%= render 'shared/item_form' %>
