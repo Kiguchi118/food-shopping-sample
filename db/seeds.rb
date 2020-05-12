@@ -23,7 +23,7 @@ User.create!(
    gimei = Gimei.name
    address = Faker::Address
    User.create!(
-      name: gimei.kanji,
+      name: gimei.first.hiragana,
       email: Faker::Internet.email,
       password: "aaaaaa",
       last_name: gimei.last.kanji,
@@ -47,30 +47,13 @@ Genre.create!(name: "スイーツ")
 
 
 ##### 商品 #####
-50.times do |n|
-   food = Faker::Food
-   Item.create(
-      genre_id: rand(1..5),
-      name: food.dish,
-      introduction: food.description,
-      price: rand(1..10) * 100,
-      sales_status: true
-   )
-end
-
-Item.create!(
-   genre_id: 6,
-   name: "チョコレートケーキ",
-   introduction: "甘くて美味しいチョコケーキ！",
-   picture: open("#{Rails.root}/app/assets/images/img1.jpg"),
-   price: 500,
-   sales_status: true
-)
-Item.create!(
-   genre_id: 6,
-   name: "抹茶プリン",
-   introduction: "甘くて美味しい抹茶プリン！",
-   picture: open("#{Rails.root}/app/assets/images/img2.jpg"),
-   price: 250,
-   sales_status: true
-)
+# 50.times do |n|
+#    food = Faker::Food
+#    Item.create(
+#       genre_id: rand(1..5),
+#       name: food.dish,
+#       introduction: food.description,
+#       price: rand(1..10) * 100,
+#       sales_status: true
+#    )
+# end
