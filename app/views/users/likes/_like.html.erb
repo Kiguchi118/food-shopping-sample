@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
-    <% if @item.liked_by?(current_user) %>
-        <%= link_to "Liked: #{@like_count}", item_likes_path(@item.id), method: :delete, remote: true, class: "liked_button" %>
+    <% if item.liked_by?(current_user) %>
+        <%= link_to "Liked: #{like_count}", item_likes_path(item.id), method: :delete, remote: true, class: "liked_button" %>
     <% else %>
-        <%= link_to "Like: #{@like_count}", item_likes_path(@item.id), method: :post, remote: true, class: "like_button" %>
+        <%= link_to "Like: #{like_count}", item_likes_path(item.id), method: :post, remote: true, class: "like_button" %>
     <% end %>
 <% else %>
-    <p><span>Like: </span><%= @like_count %></p>
+    <p><span>Like: </span><%= like_count %></p>
 <% end %>

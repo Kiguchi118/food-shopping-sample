@@ -2,31 +2,51 @@
     商品一覧
     <%= link_to "商品を登録する", new_item_path, class: "btn-pink" %>
 </h1>
-<table>
-    <thead>
-        <tr>
-            <th>商品イメージ</th>
-            <th>商品名</th>
-            <th>税抜価格(円)</th>
-            <th>ジャンル</th>
-            <th>販売ステータス</th>
-        </tr> 
-    </thead>
-    <div class="pager">
-        <%= paginate @items %>
-    </div>
-    <tbody>
-        <% @items.each do |item| %>
-        <tr>
-            <td><%= image_tag item.picture.thumb.url if item.picture? %></td>
-            <td><%= link_to "#{item.name}", item %></td>
-            <td><%= item.price %></td>
-            <td><%= item.genre.name %></td>
-            <td><%= item.sales_status ? "販売中" : "売切れ" %></td>
-        </tr>
+
+<div class="item-index">
+    <nav>
+        <b>ジャンル</b>
+        <% @genres.each do |genre| %>
+            <li><%= genre.name %></li>
         <% end %>
-    </tbody>
-</table>
-<div class="pager">
-    <%= paginate @items %>
+    </nav>
+
+    <div class="item-list">
+        <div class="pager">
+            <%= paginate @items %>
+        </div>
+        <% @items.each do |item| %>
+            <div class="item-content clearfix">
+                <div class="item-left">
+                    <% if item.picture? %>
+                        <%= link_to item do %>
+                            <%= image_tag item.picture.url, class: "item-img" %>
+                        <% end %>
+                    <% else %>
+                        <h3>イメージ画像が登録されていません</h3>
+                    <% end %>
+                </div>
+
+                <div class="item-right">
+                    <% if item.sales_status? %>
+                        <span class="yellow-btn">販売中</span>
+                    <% else %>
+                        <span class="gray-btn">売切れ</span>
+                    <% end %>
+                    <div class="item-details">
+                        <h2><%= link_to "#{item.name}", item %></h2>
+                        <p>価格(税抜): ￥<%= item.price %></p>
+                        <p>ジャンル: <%= item.genre.name %></p>
+                        <p>製造者: <%= link_to "#{item.user.name}", user_path(item.user) %></p>
+                    </div>
+                    <div class=<%= "buttons_like_" + item.id.to_s %>>
+                        <%= render 'users/likes/like', item: item, like_count: item.likes.count %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        <div class="pager">
+            <%= paginate @items %>
+        </div>
+    </div>
 </div>

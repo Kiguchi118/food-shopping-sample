@@ -8,7 +8,8 @@ class Users::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.page(params[:page]).per(20)
+    @items = Item.page(params[:page]).per(10)
+    @genres = Genre.all
   end
 
   def show

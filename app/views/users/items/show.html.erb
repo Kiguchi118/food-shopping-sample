@@ -3,27 +3,30 @@
 <div class="item-content clearfix">
     <div class="item-left">
         <% if @item.picture? %>
-            <%= image_tag @item.picture.url, class: "item-img" %>
+            <%= image_tag @item.picture.url, class: "item-img-show" %>
         <% else %>
             <h3>イメージ画像が登録されていません</h3>
         <% end %>
     </div>
 
     <div class="item-right">
+        <% if @item.sales_status? %>
+            <span class="yellow-btn">販売中</span>
+        <% else %>
+            <span class="gray-btn">売切れ</span>
+        <% end %>
+
         <div class="item-details">
-            <span class="purple-btn">
-                <%= @item.sales_status ? "販売中" : "売切れ"%>
-            </span>
             <p>価格(税抜): ￥<%= @item.price %></p>
             <p>ジャンル: <%= @item.genre.name %></p>
             <p>製造者: <%= link_to "#{@item.user.name}", user_path(@item.user) %></p>
-            <div class="buttons_like">
-                <%= render 'users/likes/like' %>
-            </div>
-            <div class="sentence item-sentence">
-                <div class="box-title">説明文</div>
-                <p><%= @item.introduction %></p>
-            </div>
+        </div>
+        <div class=<%= "buttons_like_" + @item.id.to_s %>>
+            <%= render 'users/likes/like', item: @item, like_count: @like_count %>
+        </div>
+        <div class="sentence item-sentence">
+            <div class="box-title">説明文</div>
+            <p><%= @item.introduction %></p>
         </div>
         <% if admin_signed_in? %>
             <%= link_to "商品を編集する", edit_admins_item_path(@item), class: "btn-green" %>
@@ -54,8 +57,6 @@
         <% end %>
     </div>
 </div>
-
-<hr>
 
 <div class="comment-box">
     <div id="comments_head">

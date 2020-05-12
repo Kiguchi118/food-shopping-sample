@@ -25,12 +25,7 @@
   }
 }
 
-.btn-position {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.purple-btn {
+@mixin round_btn($font-color, $back-color) {
   display: inline-block;
   margin-bottom: 15px;
   box-shadow: 2px 2px 4px gray;
@@ -38,10 +33,23 @@
   font-size: 15px;
   text-align: center;
   padding: 11px 11px;
-  background-color: rgb(223, 150, 241);
-  color: black;
+  background-color: $back-color;
+  color: $font-color;
   line-height: 11px;
   border: 1px solid $gray;
+}
+
+.btn-position {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.yellow-btn {
+  @include round_btn(black, rgb(255, 229, 80));
+}
+
+.gray-btn {
+  @include round_btn(black, rgb(226, 226, 226))
 }
 
 .btn-pink {

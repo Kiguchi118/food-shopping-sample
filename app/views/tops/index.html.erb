@@ -17,16 +17,39 @@
     </div>
 </div>
 
-<div class="item-index">
-    <h2>商品一例<i class="fas fa-utensils fa-lg fa-fw orange"></i></h2>
+<div class="top-item">
+    <h1>商品一例<i class="fas fa-utensils fa-lg fa-fw orange"></i></h2>
     <% @items.each do |item| %>
-        <div class="sentence">
-            <div class="box-title">
-                <%= link_to item.name, item %>
+        <div class="item-content clearfix">
+            <div class="item-left">
+                <% if item.picture? %>
+                    <%= link_to item do %>
+                        <%= image_tag item.picture.url, class: "item-img" %>
+                    <% end %>
+                <% else %>
+                    <h3>イメージ画像が登録されていません</h3>
+                <% end %>
             </div>
-            <p><%= item.introduction %></p>
+
+            <div class="item-right">
+                <% if item.sales_status? %>
+                    <span class="yellow-btn">販売中</span>
+                <% else %>
+                    <span class="gray-btn">売切れ</span>
+                <% end %>
+                <div class="item-details">
+                    <h2><%= link_to "#{item.name}", item %></h2>
+                    <p>価格(税抜): ￥<%= item.price %></p>
+                    <p>ジャンル: <%= item.genre.name %></p>
+                    <p><span>Like: </span><%= item.likes.count %></p>
+                </div>
+            </div>
         </div>
     <% end %>
+</div>
+
+<div class="btn-position">
+    <%= link_to "もっと商品を見る", items_path, class: "btn-pink" %>
 </div>
 
 <div class="start">
