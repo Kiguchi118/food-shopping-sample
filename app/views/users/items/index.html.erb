@@ -1,6 +1,8 @@
 <h1>
     商品一覧
-    <%= link_to "商品を登録する", new_item_path, class: "btn-pink" %>
+    <% if user_signed_in? %>
+        <%= link_to "商品を登録する", new_item_path, class: "btn-pink" %>
+    <% end %>
 </h1>
 
 <div class="item-index">

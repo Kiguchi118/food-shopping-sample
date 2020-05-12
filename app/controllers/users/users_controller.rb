@@ -5,6 +5,8 @@ class Users::UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def show
+    @items = @user.items.page(params[:page]).per(10)
+    @genres = Genre.all
   end
 
   def edit
